@@ -1,0 +1,41 @@
+#设置端口号
+server:
+  port: 80
+#设置访问路径
+context-path: /
+spring:
+    datasource:
+        name: mysql
+        type: com.alibaba.druid.pool.DruidDataSource
+        druid:
+          filters: stat
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/jiudianmanage?useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          username: root
+          password: 123456
+          initial-size: 1
+          min-idle: 1
+          max-active: 20
+          max-wait: 60000
+          time-between-eviction-runs-millis: 60000
+          min-evictable-idle-time-millis: 300000
+          validation-query: SELECT 1
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          pool-prepared-statements: false
+          max-pool-prepared-statement-per-connection-size: 20
+
+#配置mybatis的mapper路径和实体类路径
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.jiudian.manage.model
+
+
+#pagehelper分页
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check

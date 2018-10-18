@@ -1,17 +1,6 @@
 package com.jiudian.manage.service;
 
-import com.jiudian.manage.mapper.UserMapper;
-import com.jiudian.manage.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface UserService {
 
-@Service
-public class UserService {
-    @Autowired
-    UserMapper userMapper;
-
-    public int add(User user){
-        int insert = userMapper.insert(user);
-        return insert;
-    }
+    public boolean addUser(String name,String password,String power);
 }

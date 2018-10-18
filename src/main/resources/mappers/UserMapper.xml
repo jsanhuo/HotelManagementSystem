@@ -8,9 +8,11 @@
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
     <result column="power" property="power" jdbcType="INTEGER" />
+    <result column="IDnumber" property="idnumber" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userid, useraccount, password, username, age, power
+    userid, useraccount, password, username, age, power, IDnumber, money
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,11 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.jiudian.manage.model.User" >
     insert into user (userid, useraccount, password, 
-      username, age, power
-      )
+      username, age, power, 
+      IDnumber, money)
     values (#{userid,jdbcType=INTEGER}, #{useraccount,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{power,jdbcType=INTEGER}
-      )
+      #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{power,jdbcType=INTEGER}, 
+      #{idnumber,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.jiudian.manage.model.User" >
     insert into user
@@ -51,6 +53,12 @@
       <if test="power != null" >
         power,
       </if>
+      <if test="idnumber != null" >
+        IDnumber,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
@@ -70,6 +78,12 @@
       </if>
       <if test="power != null" >
         #{power,jdbcType=INTEGER},
+      </if>
+      <if test="idnumber != null" >
+        #{idnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -91,6 +105,12 @@
       <if test="power != null" >
         power = #{power,jdbcType=INTEGER},
       </if>
+      <if test="idnumber != null" >
+        IDnumber = #{idnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
     </set>
     where userid = #{userid,jdbcType=INTEGER}
   </update>
@@ -100,7 +120,9 @@
       password = #{password,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
-      power = #{power,jdbcType=INTEGER}
+      power = #{power,jdbcType=INTEGER},
+      IDnumber = #{idnumber,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
 </mapper>

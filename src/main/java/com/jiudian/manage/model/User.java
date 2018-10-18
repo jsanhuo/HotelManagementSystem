@@ -13,6 +13,10 @@ public class User {
 
     private Integer power;
 
+    private String idnumber;
+
+    private Double money;
+
     public Integer getUserid() {
         return userid;
     }
@@ -59,5 +63,21 @@ public class User {
 
     public void setPower(Integer power) {
         this.power = power;
+    }
+
+    public String getIdnumber() {
+        return idnumber;
+    }
+
+    public void setIdnumber(String idnumber) {
+        this.idnumber = idnumber == null ? null : idnumber.trim();
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
     }
 }

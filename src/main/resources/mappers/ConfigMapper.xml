@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiudian.manage.mapper.ConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.jiudian.manage.model.Config" >
+    <result column="managesalary" property="managesalary" jdbcType="DOUBLE" />
+    <result column="staffsalary" property="staffsalary" jdbcType="DOUBLE" />
+    <result column="cleanerssalary" property="cleanerssalary" jdbcType="DOUBLE" />
+    <result column="manage" property="manage" jdbcType="DOUBLE" />
+    <result column="staff" property="staff" jdbcType="DOUBLE" />
+    <result column="cleaner" property="cleaner" jdbcType="DOUBLE" />
+    <result column="totalmoney" property="totalmoney" jdbcType="DOUBLE" />
+    <result column="totalroom" property="totalroom" jdbcType="DOUBLE" />
+  </resultMap>
+  <insert id="insert" parameterType="com.jiudian.manage.model.Config" >
+    insert into config (managesalary, staffsalary, cleanerssalary, 
+      manage, staff, cleaner, 
+      totalmoney, totalroom)
+    values (#{managesalary,jdbcType=DOUBLE}, #{staffsalary,jdbcType=DOUBLE}, #{cleanerssalary,jdbcType=DOUBLE}, 
+      #{manage,jdbcType=DOUBLE}, #{staff,jdbcType=DOUBLE}, #{cleaner,jdbcType=DOUBLE}, 
+      #{totalmoney,jdbcType=DOUBLE}, #{totalroom,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiudian.manage.model.Config" >
+    insert into config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="managesalary != null" >
+        managesalary,
+      </if>
+      <if test="staffsalary != null" >
+        staffsalary,
+      </if>
+      <if test="cleanerssalary != null" >
+        cleanerssalary,
+      </if>
+      <if test="manage != null" >
+        manage,
+      </if>
+      <if test="staff != null" >
+        staff,
+      </if>
+      <if test="cleaner != null" >
+        cleaner,
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney,
+      </if>
+      <if test="totalroom != null" >
+        totalroom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="managesalary != null" >
+        #{managesalary,jdbcType=DOUBLE},
+      </if>
+      <if test="staffsalary != null" >
+        #{staffsalary,jdbcType=DOUBLE},
+      </if>
+      <if test="cleanerssalary != null" >
+        #{cleanerssalary,jdbcType=DOUBLE},
+      </if>
+      <if test="manage != null" >
+        #{manage,jdbcType=DOUBLE},
+      </if>
+      <if test="staff != null" >
+        #{staff,jdbcType=DOUBLE},
+      </if>
+      <if test="cleaner != null" >
+        #{cleaner,jdbcType=DOUBLE},
+      </if>
+      <if test="totalmoney != null" >
+        #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalroom != null" >
+        #{totalroom,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

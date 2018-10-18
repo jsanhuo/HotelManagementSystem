@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div align="center" style="align-self: center">
+    <title>uploadimg.html</title>
 
-    <form method="post" action="/Test" >
-        用户名<input id="username" name="username"></br>
-        密码<input id="password" name="password"></br>
-        <button type="submit" style="background: deepskyblue;color: #6677ff">提交</button>&nbsp;
-        <button type="reset">重新输入</button>
-    </form>
-</div>
+    <meta name="keywords" content="keyword1,keyword2,keyword3"></meta>
+    <meta name="description" content="this is my page"></meta>
+    <meta name="content-type" content="text/html; charset=UTF-8"></meta>
+
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+<form enctype="multipart/form-data" method="post" action="./upFile/upFilePhoto.do">
+    图片<input type="file" name="file"/>
+    <input name="userid"/>
+    <input type="submit" value="上传"/>
+</form>
+<img src="File/大纲.png">
 </body>
 </html>

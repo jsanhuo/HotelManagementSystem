@@ -13,7 +13,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-    public boolean addUser(String account,String password,int power){
+    @Override
+    public User selectUser(int userid) {
+        return userMapper.selectByPrimaryKey(userid);
+    }
+
+    public boolean addUser(String account, String password, int power){
         User user = new User();
         user.setUseraccount(account);
         user.setPassword(password);
@@ -68,6 +73,15 @@ public class UserServiceImpl implements UserService {
         }else{
             return null;
         }
+    }
+
+    @Override
+    public boolean photo(int userid, String url) {
+        User user = new User();
+        user.setUserid(userid);
+        user.setPhotourl(url);
+        int i = userMapper.updateByPrimaryKeySelective(user);
+        return i>0?true:false;
     }
 
 

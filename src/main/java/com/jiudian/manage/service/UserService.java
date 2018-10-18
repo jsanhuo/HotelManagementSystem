@@ -5,6 +5,8 @@ import com.jiudian.manage.model.User;
 import java.util.List;
 
 public interface UserService {
+
+    public User selectUser(int userid);
     /**
      * 添加用户
      * @param account 用户名
@@ -54,7 +56,18 @@ public interface UserService {
      */
     public List<User> getUserByPower(int power);
 
-
+    /**
+     * 登录验证
+     * @param username 用户名
+     * @param password 密码
+     * @return 用户id和用户权限等级
+     */
     public int[] login(String username,String password);
+
+
+    /**
+     * 修改头像
+     */
+    public  boolean photo(int userid,String url);
 
 }

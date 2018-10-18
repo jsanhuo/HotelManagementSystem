@@ -10,9 +10,10 @@
     <result column="power" property="power" jdbcType="INTEGER" />
     <result column="IDnumber" property="idnumber" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="photoUrl" property="photourl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userid, useraccount, password, username, age, power, IDnumber, money
+    userid, useraccount, password, username, age, power, IDnumber, money, photoUrl
   </sql>
 
   <select id="getAllUser" resultMap="BaseResultMap"  >
@@ -35,6 +36,7 @@
     where useraccount = #{useraccount,jdbcType=INTEGER}
   </select>
 
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -48,10 +50,12 @@
   <insert id="insert" parameterType="com.jiudian.manage.model.User" >
     insert into user (userid, useraccount, password, 
       username, age, power, 
-      IDnumber, money)
+      IDnumber, money, photoUrl
+      )
     values (#{userid,jdbcType=INTEGER}, #{useraccount,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{power,jdbcType=INTEGER}, 
-      #{idnumber,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE})
+      #{idnumber,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{photourl,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jiudian.manage.model.User" >
     insert into user
@@ -80,6 +84,9 @@
       <if test="money != null" >
         money,
       </if>
+      <if test="photourl != null" >
+        photoUrl,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
@@ -105,6 +112,9 @@
       </if>
       <if test="money != null" >
         #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="photourl != null" >
+        #{photourl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -132,6 +142,9 @@
       <if test="money != null" >
         money = #{money,jdbcType=DOUBLE},
       </if>
+      <if test="photourl != null" >
+        photoUrl = #{photourl,jdbcType=VARCHAR},
+      </if>
     </set>
     where userid = #{userid,jdbcType=INTEGER}
   </update>
@@ -143,7 +156,8 @@
       age = #{age,jdbcType=INTEGER},
       power = #{power,jdbcType=INTEGER},
       IDnumber = #{idnumber,jdbcType=VARCHAR},
-      money = #{money,jdbcType=DOUBLE}
+      money = #{money,jdbcType=DOUBLE},
+      photoUrl = #{photourl,jdbcType=VARCHAR}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
 </mapper>

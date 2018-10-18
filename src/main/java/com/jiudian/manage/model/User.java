@@ -17,6 +17,8 @@ public class User {
 
     private Double money;
 
+    private String photourl;
+
     public Integer getUserid() {
         return userid;
     }
@@ -79,5 +81,13 @@ public class User {
 
     public void setMoney(Double money) {
         this.money = money;
+    }
+
+    public String getPhotourl() {
+        return photourl;
+    }
+
+    public void setPhotourl(String photourl) {
+        this.photourl = photourl == null ? null : photourl.trim();
     }
 }

@@ -122,6 +122,12 @@ public class UserController {
         }
         return  signal.getResult();
     }
+
+    /**
+     * 获取对应权限的用户列表
+     * @param power
+     * @return
+     */
     @RequestMapping(value = "/getUserByPower.do")
     public Map getUserByPower(@RequestParam int power){
         List<User> Users = userService.getUserByPower(power);
@@ -137,6 +143,25 @@ public class UserController {
         return  signal.getResult();
     }
 
+    /**
+     * 通过userid获取信息
+     * @param userid 用户id
+     * @return
+     */
+    @RequestMapping(value = "/getUserById.do")
+    public Map getUserById(@RequestParam int userid){
+        User user = userService.selectUser(userid);
+        StateSignal signal = new StateSignal();
+        if(user!=null){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+            signal.put("user",user);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return  signal.getResult();
+    }
 
 
 }

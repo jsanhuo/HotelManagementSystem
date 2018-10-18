@@ -1,6 +1,8 @@
 package com.jiudian.manage.model;
 
 public class Config {
+    private Integer id;
+
     private Double managesalary;
 
     private Double staffsalary;
@@ -16,6 +18,14 @@ public class Config {
     private Double totalmoney;
 
     private Double totalroom;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Double getManagesalary() {
         return managesalary;

@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jiudian.manage.mapper.ConfigMapper" >
   <resultMap id="BaseResultMap" type="com.jiudian.manage.model.Config" >
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="managesalary" property="managesalary" jdbcType="DOUBLE" />
     <result column="staffsalary" property="staffsalary" jdbcType="DOUBLE" />
     <result column="cleanerssalary" property="cleanerssalary" jdbcType="DOUBLE" />
@@ -11,17 +12,36 @@
     <result column="totalmoney" property="totalmoney" jdbcType="DOUBLE" />
     <result column="totalroom" property="totalroom" jdbcType="DOUBLE" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    id, managesalary, staffsalary, cleanerssalary, manage, staff, cleaner, totalmoney, 
+    totalroom
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.jiudian.manage.model.Config" >
-    insert into config (managesalary, staffsalary, cleanerssalary, 
-      manage, staff, cleaner, 
-      totalmoney, totalroom)
-    values (#{managesalary,jdbcType=DOUBLE}, #{staffsalary,jdbcType=DOUBLE}, #{cleanerssalary,jdbcType=DOUBLE}, 
-      #{manage,jdbcType=DOUBLE}, #{staff,jdbcType=DOUBLE}, #{cleaner,jdbcType=DOUBLE}, 
-      #{totalmoney,jdbcType=DOUBLE}, #{totalroom,jdbcType=DOUBLE})
+    insert into config (id, managesalary, staffsalary, 
+      cleanerssalary, manage, staff, 
+      cleaner, totalmoney, totalroom
+      )
+    values (#{id,jdbcType=INTEGER}, #{managesalary,jdbcType=DOUBLE}, #{staffsalary,jdbcType=DOUBLE}, 
+      #{cleanerssalary,jdbcType=DOUBLE}, #{manage,jdbcType=DOUBLE}, #{staff,jdbcType=DOUBLE}, 
+      #{cleaner,jdbcType=DOUBLE}, #{totalmoney,jdbcType=DOUBLE}, #{totalroom,jdbcType=DOUBLE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jiudian.manage.model.Config" >
     insert into config
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
       <if test="managesalary != null" >
         managesalary,
       </if>
@@ -48,6 +68,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
       <if test="managesalary != null" >
         #{managesalary,jdbcType=DOUBLE},
       </if>
@@ -74,4 +97,46 @@
       </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiudian.manage.model.Config" >
+    update config
+    <set >
+      <if test="managesalary != null" >
+        managesalary = #{managesalary,jdbcType=DOUBLE},
+      </if>
+      <if test="staffsalary != null" >
+        staffsalary = #{staffsalary,jdbcType=DOUBLE},
+      </if>
+      <if test="cleanerssalary != null" >
+        cleanerssalary = #{cleanerssalary,jdbcType=DOUBLE},
+      </if>
+      <if test="manage != null" >
+        manage = #{manage,jdbcType=DOUBLE},
+      </if>
+      <if test="staff != null" >
+        staff = #{staff,jdbcType=DOUBLE},
+      </if>
+      <if test="cleaner != null" >
+        cleaner = #{cleaner,jdbcType=DOUBLE},
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="totalroom != null" >
+        totalroom = #{totalroom,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiudian.manage.model.Config" >
+    update config
+    set managesalary = #{managesalary,jdbcType=DOUBLE},
+      staffsalary = #{staffsalary,jdbcType=DOUBLE},
+      cleanerssalary = #{cleanerssalary,jdbcType=DOUBLE},
+      manage = #{manage,jdbcType=DOUBLE},
+      staff = #{staff,jdbcType=DOUBLE},
+      cleaner = #{cleaner,jdbcType=DOUBLE},
+      totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      totalroom = #{totalroom,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

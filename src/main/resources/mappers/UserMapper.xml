@@ -14,6 +14,27 @@
   <sql id="Base_Column_List" >
     userid, useraccount, password, username, age, power, IDnumber, money
   </sql>
+
+  <select id="getAllUser" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from user
+  </select>
+
+  <select id="selectByPower" resultMap="BaseResultMap"  parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where power = #{power,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByAccount" resultMap="BaseResultMap"  parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where useraccount = #{useraccount,jdbcType=INTEGER}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

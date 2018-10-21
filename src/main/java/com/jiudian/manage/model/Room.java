@@ -9,6 +9,8 @@ public class Room {
 
     private Integer state;
 
+    private Integer type;
+
     public Integer getRoomid() {
         return roomid;
     }
@@ -39,5 +41,13 @@ public class Room {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

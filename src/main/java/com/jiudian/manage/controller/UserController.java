@@ -2,13 +2,18 @@ package com.jiudian.manage.controller;
 
 import com.jiudian.manage.model.User;
 import com.jiudian.manage.service.impl.UserServiceImpl;
+import com.jiudian.manage.until.ImageCode;
 import com.jiudian.manage.until.State;
 import com.jiudian.manage.until.StateSignal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -25,19 +30,29 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/login.do")
-    public Map login(@RequestParam String useraccount,@RequestParam String password){
-        int[] login = userService.login(useraccount, password);
+    public Map login(@RequestParam String useraccount, @RequestParam String password,@RequestParam String icode,HttpSession session){
         StateSignal signal = new StateSignal();
-        if(login!=null){
-            signal.put(State.SuccessCode);
-            signal.put(State.SuccessMessage);
-            signal.put("userid",login[0]);
-            signal.put("power",login[1]);
-        }else {
+        if(icode.equals(session.getAttribute(ImageCode.CODENAME))){
+            int[] login = userService.login(useraccount, password);
+            if(login!=null){
+                signal.put(State.SuccessCode);
+                signal.put(State.SuccessMessage);
+                signal.put("userid",login[0]);
+                signal.put("power",login[1]);
+            }else {
+                signal.put(State.ErrorCode);
+                signal.put(State.ErrorMessage);
+            }
+        }else{
             signal.put(State.ErrorCode);
-            signal.put(State.ErrorMessage);
+            signal.put("message","验证码输入错误");
         }
         return signal.getResult();
+    }
+
+    @GetMapping("/createImage")
+    public void createImage(HttpServletResponse response, HttpSession session) throws IOException {
+        ImageCode.createImage(response,session);
     }
 
     /**
@@ -120,6 +135,7 @@ public class UserController {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);
         }
+
         return  signal.getResult();
     }
 

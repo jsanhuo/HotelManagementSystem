@@ -19,6 +19,8 @@ public class User {
 
     private String photourl;
 
+    private String phonenumber;
+
     public Integer getUserid() {
         return userid;
     }
@@ -89,5 +91,13 @@ public class User {
 
     public void setPhotourl(String photourl) {
         this.photourl = photourl == null ? null : photourl.trim();
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber == null ? null : phonenumber.trim();
     }
 }

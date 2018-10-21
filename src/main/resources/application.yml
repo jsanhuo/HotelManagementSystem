@@ -35,6 +35,7 @@ spring:
 
 
 
+
 #配置mybatis的mapper路径和实体类路径
 mybatis:
   mapper-locations: classpath:mappers/*.xml

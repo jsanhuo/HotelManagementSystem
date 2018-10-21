@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
         user.setUseraccount(account);
         user.setPassword(password);
         user.setPower(power);
-        int insert = userMapper.insert(user);
+        int insert = userMapper.insertSelective(user);
         return insert>0?true:false;
     }
 

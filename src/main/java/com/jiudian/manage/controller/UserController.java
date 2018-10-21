@@ -32,7 +32,9 @@ public class UserController {
     @RequestMapping(value = "/login.do")
     public Map login(@RequestParam String useraccount, @RequestParam String password,@RequestParam String icode,HttpSession session){
         StateSignal signal = new StateSignal();
-        if(icode.equals(session.getAttribute(ImageCode.CODENAME))){
+        String code = (String) session.getAttribute(ImageCode.CODENAME);
+        System.out.println();
+        if(icode!=null&&code!=null&&icode.equals(code)){
             int[] login = userService.login(useraccount, password);
             if(login!=null){
                 signal.put(State.SuccessCode);
@@ -87,8 +89,8 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/updateUser.do")
-    public Map updateUser(@RequestParam int userid,@RequestParam String password,@RequestParam String username,@RequestParam int age,@RequestParam int power,@RequestParam String IDnumber){
-        boolean upd = userService.alterUser(userid, password, username, age, power, IDnumber);
+    public Map updateUser(@RequestParam int userid,@RequestParam String password,@RequestParam String username,@RequestParam int age,@RequestParam int power,@RequestParam String IDnumber,@RequestParam String phonenumber){
+        boolean upd = userService.alterUser(userid, password, username, age, power, IDnumber,phonenumber);
         StateSignal signal = new StateSignal();
         if(upd){
             signal.put(State.SuccessCode);

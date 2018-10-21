@@ -11,6 +11,24 @@
   <sql id="Base_Column_List">
     roomid, local, money, state, type
   </sql>
+
+  <select id="selectRoomByStateType" parameterType="com.jiudian.manage.model.Room" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from room
+    <where>
+      <trim  suffixOverrides="and">
+      <if test="state !=null">
+        state = #{state,jdbcType=INTEGER}
+      </if>
+      <if test="type !=null">
+        and type =#{type,jdbcType=INTEGER}
+      </if>
+      </trim>
+    </where>
+  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

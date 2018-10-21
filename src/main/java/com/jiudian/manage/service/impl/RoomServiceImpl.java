@@ -6,6 +6,8 @@ import com.jiudian.manage.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoomServiceImpl implements RoomService {
     @Autowired
@@ -47,5 +49,17 @@ public class RoomServiceImpl implements RoomService {
         room.setState(state);
         int i = roomMapper.updateByPrimaryKeySelective(room);
         return i>0?true:false;
+    }
+
+    @Override
+    public List<Room> getRoomByState(int state, int type) {
+        Room room = new Room();
+        if(state!=-1){
+            room.setState(state);
+        }
+        if(type!=-1){
+            room.setType(type);
+        }
+        return roomMapper.selectRoomByStateType(room);
     }
 }

@@ -3,6 +3,8 @@ package com.jiudian.manage.mapper;
 import com.jiudian.manage.model.Room;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RoomMapper {
     int deleteByPrimaryKey(Integer roomid);
@@ -16,4 +18,8 @@ public interface RoomMapper {
     int updateByPrimaryKeySelective(Room record);
 
     int updateByPrimaryKey(Room record);
+
+    List<Room> selectRoomByStateType(Room stateType);
+
+
 }

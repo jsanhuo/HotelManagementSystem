@@ -31,9 +31,10 @@ public interface UserService {
      * @param age           用户年龄
      * @param power         用户权限
      * @param IDnumber      工号
+     * @param phonenumber   手机号
      * @return              是否修改成功
      */
-    public boolean alterUser(int userid,String password,String username,int age,int power,String IDnumber);
+    public boolean alterUser(int userid,String password,String username,int age,int power,String IDnumber,String phonenumber);
 
     /**
      * 修改用户的业绩(服务器内部调用)

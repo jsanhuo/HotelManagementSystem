@@ -1,5 +1,9 @@
 package com.jiudian.manage.service;
 
+import com.jiudian.manage.model.Room;
+
+import java.util.List;
+
 public interface RoomService {
     /**
      * 添加一个新房间
@@ -36,6 +40,13 @@ public interface RoomService {
      * @return
      */
     public boolean updateRoomState(int roomid,int state);
+
+    /**
+     * 获取某一状态或者类型的房间
+     * @param state
+     * @return
+     */
+    public List<Room> getRoomByState(int state,int type);
 
 
 }

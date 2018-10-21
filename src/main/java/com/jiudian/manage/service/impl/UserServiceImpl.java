@@ -3,6 +3,7 @@ package com.jiudian.manage.service.impl;
 import com.jiudian.manage.mapper.UserMapper;
 import com.jiudian.manage.model.User;
 import com.jiudian.manage.service.UserService;
+import com.jiudian.manage.until.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
         user.setUseraccount(account);
         user.setPassword(password);
         user.setPower(power);
+        user.setIdnumber(UUIDUtil.generateShortUuid());
         int insert = userMapper.insertSelective(user);
         return insert>0?true:false;
     }
@@ -34,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean alterUser(int userid, String password, String username, int age, int power, String IDnumber) {
+    public boolean alterUser(int userid, String password, String username, int age, int power, String IDnumber,String phonenumber) {
         User user = new User();
         user.setUserid(userid);
         user.setPassword(password);
@@ -42,6 +44,7 @@ public class UserServiceImpl implements UserService {
         user.setAge(age);
         user.setPower(power);
         user.setIdnumber(IDnumber);
+        user.setPhonenumber(phonenumber);
         int i = userMapper.updateByPrimaryKeySelective(user);
         return i>0?true:false;
     }

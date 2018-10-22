@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#code").attr("src","/user/createImage?code="+Math.random());
 	$("#loginBtn").click(function(){
 		login();
 	})
@@ -32,8 +33,7 @@ function login(){
 				alert("账号或密码错误");
 			}
 			else{
-				var urlString="";
-				window.location.href=urlString;
+                alert("登录成功");
 			}
 		},
 		error:function(){

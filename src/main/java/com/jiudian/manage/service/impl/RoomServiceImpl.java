@@ -1,5 +1,6 @@
 package com.jiudian.manage.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.jiudian.manage.mapper.RoomMapper;
 import com.jiudian.manage.model.Room;
 import com.jiudian.manage.service.RoomService;
@@ -52,7 +53,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> getRoomByState(int state, int type) {
+    public List<Room> getRoomByState(int state, int type,int pageNum,int pageSize) {
         Room room = new Room();
         if(state!=-1){
             room.setState(state);
@@ -60,6 +61,7 @@ public class RoomServiceImpl implements RoomService {
         if(type!=-1){
             room.setType(type);
         }
+        PageHelper.startPage(pageNum,pageSize);
         return roomMapper.selectRoomByStateType(room);
     }
 }

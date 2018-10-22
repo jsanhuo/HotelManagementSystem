@@ -46,7 +46,7 @@ public interface RoomService {
      * @param state
      * @return
      */
-    public List<Room> getRoomByState(int state,int type);
+    public List<Room> getRoomByState(int state,int type,int pageNum,int pageSize);
 
 
 }

@@ -126,13 +126,15 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/getAllUser.do")
-    public Map getAllUser(){
-        List<User> allUser = userService.getAllUser();
+    public Map getAllUser(@RequestParam int pageNum,@RequestParam int pageSize){
+        List<User> allUser = userService.getAllUser(pageNum,pageSize);
         StateSignal signal = new StateSignal();
         if(allUser!=null){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
             signal.put("List",allUser);
+            signal.put("pageNum",pageNum);
+            signal.put("pageSize",pageSize);
         }else {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);
@@ -147,13 +149,15 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/getUserByPower.do")
-    public Map getUserByPower(@RequestParam int power){
-        List<User> Users = userService.getUserByPower(power);
+    public Map getUserByPower(@RequestParam int power,@RequestParam int pageNum,@RequestParam int pageSize){
+        List<User> Users = userService.getUserByPower(power,pageNum,pageSize);
         StateSignal signal = new StateSignal();
         if(Users!=null){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
             signal.put("List",Users);
+            signal.put("pageNum",pageNum);
+            signal.put("pageSize",pageSize);
         }else {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);

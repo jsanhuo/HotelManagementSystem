@@ -45,8 +45,8 @@ public class RoomController {
         return  signal.getResult();
     }
     @RequestMapping("/getRoom.do")
-    public Map selectRoom(@RequestParam int state,@RequestParam int type){
-        List<Room> roomByState = roomService.getRoomByState(state, type);
+    public Map selectRoom(@RequestParam int state,@RequestParam int type,@RequestParam int pageNum,@RequestParam int pageSize){
+        List<Room> roomByState = roomService.getRoomByState(state, type,pageNum,pageSize);
         StateSignal signal = new StateSignal();
         if(roomByState!=null){
             signal.put(State.SuccessCode);

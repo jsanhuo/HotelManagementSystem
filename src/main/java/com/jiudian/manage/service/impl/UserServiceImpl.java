@@ -1,5 +1,6 @@
 package com.jiudian.manage.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.jiudian.manage.mapper.UserMapper;
 import com.jiudian.manage.model.User;
 import com.jiudian.manage.service.UserService;
@@ -59,12 +60,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUser() {
+    public List<User> getAllUser(int pageNum,int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         return userMapper.getAllUser();
     }
 
     @Override
-    public List<User> getUserByPower(int power) {
+    public List<User> getUserByPower(int power,int pageNum,int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         return userMapper.selectByPower(power);
     }
 

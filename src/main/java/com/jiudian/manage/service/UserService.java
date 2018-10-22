@@ -48,14 +48,14 @@ public interface UserService {
      * 获得所有的用户
      * @return  返回List集合
      */
-    public List<User> getAllUser();
+    public List<User> getAllUser(int pageNum,int pageSize);
 
     /**
      * 获取相应权限的用户
      * @param power
      * @return
      */
-    public List<User> getUserByPower(int power);
+    public List<User> getUserByPower(int power,int pageNum,int pageSize);
 
     /**
      * 登录验证

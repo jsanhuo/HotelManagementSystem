@@ -1,0 +1,117 @@
+.navbar-default{
+	transition: all 0.6s;
+	background-color: #219ED8;
+	border: 0;
+	border-radius: 0;
+}
+
+
+.header{                                       
+	text-align: center;
+	letter-spacing: 1rem;
+}
+
+.navbar{
+	min-height: 5.4rem !important;
+}
+
+
+@media screen and (min-width:1000px){
+
+.nav-con{
+	padding: 0 12rem;
+}
+
+}
+
+label{
+	display: none;
+}
+
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+li.navli{
+	margin-right: 40px;
+}
+
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{
+	background: transparent;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	background: transparent;
+	color: white;
+	transition: all 0.6s;
+	transform: scale(1.0,1.2);
+}
+
+
+.navbar-nav>li>a{
+	padding-top: 1.7rem;
+}
+
+
+.navbar-default .navbar-nav>li>a:hover{
+	color: white;
+	transition: all 0.6s;
+}
+
+.main{
+	margin-top: -20px;
+}
+
+.nopadding{
+	padding: 0;
+}
+
+.navlist{
+	min-height: 58rem;
+	background: #254552;
+}
+
+a.list-group-item{
+	color: #C2D2CB;
+	padding-left: 3rem;
+
+}
+
+.list-group-item{
+	background-color:transparent;
+	color: #C2D2CB;
+	border:0;
+	border-radius: 0;
+}
+
+.list-group-item:hover,.list-group-item:focus{
+	background-color:transparent !important;
+	color: #C2D2CB !important;
+
+}
+
+.list-group-item.active,.list-group-item.active:hover{
+	background: #20343D  !important;
+	color:white !important;
+	border: 0;
+}
+
+.glyphicon{
+	margin-right: 10px;
+}
+
+.mainFrame{
+	width: 100%;
+	min-height: 60rem;
+}
+
+

@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    $("#code").attr("src","/user/createImage?code="+Math.random());
+	getCode();
+	var h=$(window).height();
+	$("#main").css("height",h);
 	$("#loginBtn").click(function(){
 		login();
 	})
@@ -11,7 +13,7 @@ $(document).ready(function(){
 
 //获取验证码
 function getCode(){
-    $("#code").attr("src","/user/createImage?code="+Math.random());
+	$("#code").attr("src","./user/createImage?code="+Math.random());
 }
 
 //登录
@@ -29,12 +31,16 @@ function login(){
 			"icode":code
 		},
 		success:function(data){
-			if(data.code=="-1"){
-				alert("账号或密码错误");
+			console.log(data)
+			if(data.code=="0"){
+				var urlString="pages/myCenter.html?power="+data.power+"&userid="+data.userid;
+				window.location.href=urlString;
 			}
-			else{
-                alert("登录成功");
+			else if(data.code=="-1"){
+				alert("验证码错误")
 			}
+			else
+				alert("账号或密码错误")
 		},
 		error:function(){
 			alert("登录 发生错误");

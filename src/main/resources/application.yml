@@ -27,11 +27,16 @@ spring:
           test-on-return: false
           pool-prepared-statements: false
           max-pool-prepared-statement-per-connection-size: 20
+    thymeleaf:
+      cache: false
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
     http:
       encoding:
         charset: UTF-8
         force: true
         enabled: true
+
 
 
 

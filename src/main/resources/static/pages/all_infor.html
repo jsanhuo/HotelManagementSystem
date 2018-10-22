@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>用户信息</title>
+	<meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/myCenter.css">
+  <link rel="stylesheet" type="text/css" href="../css/footer.css">
+  <link rel="stylesheet" type="text/css" href="../css/pages.css">
+
+</head>
+
+<body>
+<div class="col-md-12 col-xs-12 nopadding" style="padding-top:4rem;">
+  <div class="col-md-3 col-xs-4 nopadding" style="margin-bottom:10px">
+
+    <img id="userpic" class="userpic" src=" "/>
+    <div class="col-md-12 col-xs-12 username">
+      <a href="#"  data-toggle="modal" data-target="#changePic">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span>修改头像</span>
+      </a>
+    </div>
+
+  </div>
+  <div class="col-md-6 col-xs-8 nopadding" style="border-left:1px solid gray;padding-left: 20px">
+    <div class="col-md-12  col-xs-12" style="font-size: 1.5rem;margin-bottom: 10px;display: block" id="showInfodiv">
+      <a href="#"  id="showInfo">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span>修改信息</span>
+      </a>
+      <div class="fdata">
+        <p>
+          <span>账号 Account ：</span>
+          <span class="value" id="account">用户名</span>
+          <a href="#" style="margin-left: 20px"  data-toggle="modal" data-target="#changePwd">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span>修改密码</span>
+          </a>
+        </p>     
+      </div>
+      <div class="fdata">
+        <p>
+          <span>工号 ID ：</span>
+          <span class="value" id="idnum"></span>
+        </p>     
+      </div>
+      <div class="fdata">
+        <p>
+          <span>姓名 Name ：</span>
+          <span class="value" id="name"></span>
+        </p>     
+      </div>
+      <div class="fdata">
+        <p>
+          <span>年龄 Age ：</span>
+          <span class="value" id="age"></span>
+        </p>     
+      </div>
+      <div class="fdata">
+        <p>
+          <span>手机号 PhoneNumber ：</span>
+          <span class="value" id="phone"></span>
+        </p>     
+      </div>
+    </div>
+
+    <div class="col-md-12 col-xs-12" style="font-size:1.5rem;margin-bottom: 10px;display: none" id="showAlterdiv">
+      <a href="#" id="showAlter">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span>返回</span>
+      </a>
+      <form class="form-inline" style="margin-top: 10px">
+        <div class="form-group alterinfo col-xs-12 col-md-12">姓名：
+          <label for="name">Name</label>
+          <input type="text" name="name" class="form-control" id="inputName">
+        </div>
+        <div class="form-group alterinfo col-xs-12 col-md-12">年龄：
+          <label for="age">Age</label>
+          <input type="text" name="age" class="form-control" id="inputAge">
+        </div>
+        <div class="form-group alterinfo col-xs-12 col-md-12">手机号：
+          <label for="phone">Phone</label>
+          <input type="text" name="phone" class="form-control" id="inputPhone">
+        </div>
+        <div class="form-group alterinfo col-xs-12 col-md-12">
+          <input type="button" id="alterInfoBtn" class="btn btn-success" value="确定"/>
+        </div>
+      </form> 
+    </div>
+    
+     
+  </div>
+
+</div>
+
+</body>
+
+<div class="modal fade" id="changePic" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">修改头像</h4>
+      </div>
+      <div class="modal-body">
+        <script type="text/javascript">
+            function saveReport(){
+              $("#uploadProfile").ajaxSubmit(function(data){ 
+                console.log(data);
+                if(data.code==0)
+                  alert("修改头像成功!");
+                else
+                  alert("修改头像失败!");
+              }); 
+              return false;
+              //必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 
+            } 
+        </script>
+        <form action="../upFile/upFilePhoto.do"  method="post"  enctype="multipart/form-data"  onsubmit="return saveReport()" id="uploadProfile">
+          <input type="text" name="userid" class="form-control" id="inputNone" style="display: none;">文件大小1M以内
+          <input id="inputFile" name="file" class="btn-file-molding" type="file"><br/>  
+          <input type="submit" id="alterProfile" class="btn btn-success" value="修改头像"/>
+        <form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="changePwd" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">修改密码</h4>
+      </div>
+      <div class="modal-body" style="width: 80%;padding-left:20%">
+          <div class="form-group alterinfo">请输入原密码：
+            <label for="oldPwd">oldPwd</label>
+            <input type="password" name="oldPwd" class="form-control" id="inputoldPwd">
+          </div>
+          <div class="form-group alterinfo">请输入新密码：
+            <label for="newPwd">newPwd</label>
+            <input type="password" name="newPwd" class="form-control" id="inputnewPwd">
+          </div>
+          <div class="form-group alterinfo">确认新密码：
+            <label for="renewPwd">newPwd</label>
+            <input type="password" name="renewPwd" class="form-control" id="inputrenewPwd">
+          </div>
+          <div class="form-group alterinfo">
+            <input type="button" id="alterPwdBtn" class="btn btn-success" value="确定"/>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery-form.js"></script>
+<script type="text/javascript" src="../js/all_infor.js"></script>

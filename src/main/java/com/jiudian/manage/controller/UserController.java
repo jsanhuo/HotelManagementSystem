@@ -33,7 +33,7 @@ public class UserController {
     public Map login(@RequestParam String useraccount, @RequestParam String password,@RequestParam String icode,HttpSession session){
         StateSignal signal = new StateSignal();
         String code = (String) session.getAttribute(ImageCode.CODENAME);
-        System.out.println();
+        System.out.println("session: "+code+"   实际"+icode);
         if(icode!=null&&code!=null&&icode.equals(code)){
             int[] login = userService.login(useraccount, password);
             if(login!=null){

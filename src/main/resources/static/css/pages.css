@@ -1,0 +1,36 @@
+
+.nopadding{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.userpic{
+	width: 50%;
+	border-radius: 50%;
+	border: 1px solid black;
+	margin-left:25%;
+}
+
+.username{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 1.7rem;
+}
+
+.glyphicon{
+	margin-right: 0;
+}
+
+.fdata {
+    padding-left: 2%;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 3.2;
+    border-bottom: 2px solid #e6e6e6;
+    overflow: hidden;
+    float: left;
+}
+
+.alterinfo{
+	margin-bottom: 20px !important;
+}

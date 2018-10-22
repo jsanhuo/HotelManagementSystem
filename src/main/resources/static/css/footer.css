@@ -1,0 +1,26 @@
+
+.bs-docs-footer {
+    padding-top: 25px;
+    padding-bottom: 50px;
+    height: 16rem;
+    color: #99979c;
+    text-align: center;
+    background-color: rgba(0,0,0,.8);
+}
+
+.bs-docs-footer-links {
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.bs-docs-footer-links li {
+    display: inline-block;
+}
+
+.bs-docs-footer a {
+    color: #fff;
+}
+
+.bs-docs-footer p {
+    margin-bottom: 0;
+}

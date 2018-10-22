@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+登录
+<form action="./user/login.do">
+用户名<input name="useraccount" />
+    密码<input name="password"/>
+    验证码<img src="/user/createImage">
+    <input name="icode">
+    <button type="submit">登录</button>
+</form>
+<br/>
+增加
+<form action="./user/addUser.do">
+    用户名<input name="useraccount" />
+    密码<input name="password"/>
+    权限 <input name="power">
+    <button type="submit">增加</button>
+</form>
+<br>
+删除
+<form action="./user/delUser.do">
+    用户id<input name="userid" />
+    <button type="submit">删除</button>
+</form>
+
+<br>
+修改
+<form action="./user/updateUser.do">
+    用户id<input name="userid" />
+    密码<input name="password"/>
+    姓名<input name="username" />
+    年龄<input name="age" />
+    工号<input name="IDnumber"/>
+    权限 <input name="power"/>
+    手机号<input name="phonenumber"/>
+    <button type="submit"/>修改</button>
+</form>
+</body>
+</html>

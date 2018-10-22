@@ -7,13 +7,18 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class TimeUtil {
+    /**
+     * 获取两个时间段的天数从date2-date1
+     * @param date1
+     * @param date2
+     * @return
+     */
     public static int getBetweenDay(String  date1, String date2) {
         Calendar d1 = new GregorianCalendar();
         d1.setTime(formatterTime(date1));
         Calendar d2 = new GregorianCalendar();
         d2.setTime(formatterTime(date2));
         int days = d2.get(Calendar.DAY_OF_YEAR) - d1.get(Calendar.DAY_OF_YEAR);
-
         int y2 = d2.get(Calendar.YEAR);
         if (d1.get(Calendar.YEAR) != y2) {
             do {

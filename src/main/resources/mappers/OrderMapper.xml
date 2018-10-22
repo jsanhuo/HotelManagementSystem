@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.jiudian.manage.model.Order" >
     <id column="orderid" property="orderid" jdbcType="INTEGER" />
     <result column="householdname" property="householdname" jdbcType="VARCHAR" />
-    <result column="ID" property="id" jdbcType="INTEGER" />
-    <result column="starttime" property="starttime" jdbcType="TIMESTAMP" />
-    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
-    <result column="money" property="money" jdbcType="VARCHAR" />
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="roomid" property="roomid" jdbcType="INTEGER" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
@@ -18,25 +18,25 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from order
+    from orderlist
     where orderid = #{orderid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from order
+    delete from orderlist
     where orderid = #{orderid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jiudian.manage.model.Order" >
-    insert into order (orderid, householdname, ID, 
+    insert into orderlist (orderid, householdname, ID, 
       starttime, endtime, money, 
       state, roomid, userid
       )
-    values (#{orderid,jdbcType=INTEGER}, #{householdname,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, 
-      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{money,jdbcType=VARCHAR}, 
+    values (#{orderid,jdbcType=INTEGER}, #{householdname,jdbcType=VARCHAR}, #{id,jdbcType=VARCHAR}, 
+      #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{money,jdbcType=DOUBLE}, 
       #{state,jdbcType=INTEGER}, #{roomid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.jiudian.manage.model.Order" >
-    insert into order
+    insert into orderlist
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderid != null" >
         orderid,
@@ -74,16 +74,16 @@
         #{householdname,jdbcType=VARCHAR},
       </if>
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="starttime != null" >
-        #{starttime,jdbcType=TIMESTAMP},
+        #{starttime,jdbcType=DATE},
       </if>
       <if test="endtime != null" >
-        #{endtime,jdbcType=TIMESTAMP},
+        #{endtime,jdbcType=DATE},
       </if>
       <if test="money != null" >
-        #{money,jdbcType=VARCHAR},
+        #{money,jdbcType=DOUBLE},
       </if>
       <if test="state != null" >
         #{state,jdbcType=INTEGER},
@@ -97,22 +97,22 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.jiudian.manage.model.Order" >
-    update order
+    update orderlist
     <set >
       <if test="householdname != null" >
         householdname = #{householdname,jdbcType=VARCHAR},
       </if>
       <if test="id != null" >
-        ID = #{id,jdbcType=INTEGER},
+        ID = #{id,jdbcType=VARCHAR},
       </if>
       <if test="starttime != null" >
-        starttime = #{starttime,jdbcType=TIMESTAMP},
+        starttime = #{starttime,jdbcType=DATE},
       </if>
       <if test="endtime != null" >
-        endtime = #{endtime,jdbcType=TIMESTAMP},
+        endtime = #{endtime,jdbcType=DATE},
       </if>
       <if test="money != null" >
-        money = #{money,jdbcType=VARCHAR},
+        money = #{money,jdbcType=DOUBLE},
       </if>
       <if test="state != null" >
         state = #{state,jdbcType=INTEGER},
@@ -127,12 +127,12 @@
     where orderid = #{orderid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jiudian.manage.model.Order" >
-    update order
+    update orderlist
     set householdname = #{householdname,jdbcType=VARCHAR},
-      ID = #{id,jdbcType=INTEGER},
-      starttime = #{starttime,jdbcType=TIMESTAMP},
-      endtime = #{endtime,jdbcType=TIMESTAMP},
-      money = #{money,jdbcType=VARCHAR},
+      ID = #{id,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=DATE},
+      endtime = #{endtime,jdbcType=DATE},
+      money = #{money,jdbcType=DOUBLE},
       state = #{state,jdbcType=INTEGER},
       roomid = #{roomid,jdbcType=INTEGER},
       userid = #{userid,jdbcType=INTEGER}

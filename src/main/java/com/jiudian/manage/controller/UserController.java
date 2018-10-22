@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @GetMapping("/createImage")
-    public void createImage(HttpServletResponse response, HttpSession session) throws IOException {
+    public void createImage(@RequestParam String code, HttpServletResponse response, HttpSession session) throws IOException {
         ImageCode.createImage(response,session);
     }
 

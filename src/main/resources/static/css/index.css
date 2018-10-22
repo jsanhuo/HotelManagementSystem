@@ -1,0 +1,92 @@
+.navbar-default{
+	transition: all 0.6s;
+	background-color: rgba(0,0,0,.7);
+	border: 0;
+	border-radius: 0;
+}
+
+
+.header{                                       
+	text-align: center;
+	letter-spacing: 1rem;
+}
+
+.navbar{
+	min-height: 5.4rem !important;
+}
+
+
+@media screen and (min-width:1000px){
+
+.nav-con{
+	padding: 0 12rem;
+}
+
+}
+
+
+
+label{
+	display: none;
+}
+
+.logindiv{
+	border: 1px solid white;
+	padding: 0rem 3.5rem;
+	height: 32rem;
+	background: rgba(255,255,255,.9);
+	position: relative;
+	margin-top: 10rem;
+}
+
+.login-h{
+	border-bottom: 2px solid #337AB7;
+	text-align: center;
+	letter-spacing: 2.5px;
+}
+
+.login-f{
+	padding-top: 2rem !important;
+}
+
+.forminput{
+	height: 4rem;
+}
+
+.main{
+	background: url('../img/pexels-photo-545049.jpg') no-repeat;
+	background-repeat:repeat;
+    background-size:auto 100% ;
+    background-size: cover;
+	height: 65rem;
+}
+
+input[type="text"],
+input[type="password"]{
+	text-indent:2.3rem;
+	font-weight:normal;
+	color:black;
+	background:url('../img/login-sprite.png') no-repeat white;
+	background-position:3% 10%;
+}
+
+input[type="password"]{
+	background-position:3% 90%;
+}
+
+.code{
+	height: 4rem;
+	width: 100%;
+	border:1px solid #3D86ED;
+	border-radius: 5px;
+}
+
+.loginbtn{
+	background: #419FD8;
+	color: white;
+}
+
+.loginbtn:hover{
+	background: #5D89FA;
+	color: white;
+}

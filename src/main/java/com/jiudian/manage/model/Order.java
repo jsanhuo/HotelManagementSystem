@@ -7,13 +7,13 @@ public class Order {
 
     private String householdname;
 
-    private Integer id;
+    private String id;
 
     private Date starttime;
 
     private Date endtime;
 
-    private String money;
+    private Double money;
 
     private Integer state;
 
@@ -37,12 +37,12 @@ public class Order {
         this.householdname = householdname == null ? null : householdname.trim();
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public Date getStarttime() {
@@ -61,12 +61,12 @@ public class Order {
         this.endtime = endtime;
     }
 
-    public String getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
-        this.money = money == null ? null : money.trim();
+    public void setMoney(Double money) {
+        this.money = money;
     }
 
     public Integer getState() {

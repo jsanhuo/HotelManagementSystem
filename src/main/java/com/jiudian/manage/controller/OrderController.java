@@ -29,8 +29,9 @@ public class OrderController {
      */
     @RequestMapping("/addOrder.do")
     public Map addOrder(@RequestParam String householdname,@RequestParam String id,@RequestParam String starttime,@RequestParam String endtime,@RequestParam int roomid,@RequestParam int userid){
+        boolean b = orderService.addOrder(householdname, id, starttime, endtime, roomid, userid);
         StateSignal signal = new StateSignal();
-        if(false){
+        if(b){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
         }else {

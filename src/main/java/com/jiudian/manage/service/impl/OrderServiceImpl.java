@@ -19,6 +19,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean addOrder(String householdname, String id, String starttime, String endtime, int roomid, int userid) {
         Room room = roomMapper.selectByPrimaryKey(roomid);
+        if(room.getState()!=1){
+            return false;
+        }
         Order order = new Order();
         order.setHouseholdname(householdname);
         order.setId(id);
@@ -45,7 +48,50 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean DelOrder(int orderid) {
+    public boolean delOrder(int orderid) {
+        Order order = orderMapper.selectByPrimaryKey(orderid);
+        Integer roomid = order.getRoomid();
+        Room room = new Room();
+        room.setRoomid(roomid);
+        room.setState(1);
+        int i = roomMapper.updateByPrimaryKeySelective(room);
+        if(i>0){
+            int i1 = orderMapper.deleteByPrimaryKey(orderid);
+            if(i1>0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateOrderState(int orderid, int state) {
+        Order order = orderMapper.selectByPrimaryKey(orderid);
+        if(order==null){
+            return false;
+        }
+        Integer roomid = order.getRoomid();
+        Room room = new Room();
+        room.setRoomid(roomid);
+        if(state==2){
+            room.setState(3);
+        }
+        if(state==3){
+            room.setState(1);
+        }
+        order.setState(state);
+        int i = roomMapper.updateByPrimaryKeySelective(room);
+        if(i>0){
+            int i1 = orderMapper.updateByPrimaryKeySelective(order);
+            if(i1>0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean getAllOrder() {
         return false;
     }
 }

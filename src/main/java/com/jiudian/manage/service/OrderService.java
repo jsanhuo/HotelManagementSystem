@@ -18,6 +18,20 @@ public interface OrderService {
      * @param orderid
      * @return
      */
-    public boolean DelOrder(int orderid);
+    public boolean delOrder(int orderid);
+
+    /**
+     * 修改订单状态
+     * @param orderid
+     * @param state
+     * @return
+     */
+    public boolean updateOrderState(int orderid,int state);
+
+    /**
+     *
+     * @return
+     */
+    public boolean getAllOrder();
 
 }

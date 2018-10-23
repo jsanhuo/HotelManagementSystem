@@ -40,4 +40,44 @@ public class OrderController {
         }
         return  signal.getResult();
     }
+
+    /**
+     * 删除订单（管理员权限）
+     * @param orderid 订单id
+     * @return
+     */
+    @RequestMapping("/delOrder.do")
+    public Map delOrder(@RequestParam int orderid){
+        boolean b = orderService.delOrder(orderid);
+        StateSignal signal = new StateSignal();
+        if(b){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return  signal.getResult();
+    }
+
+    /**
+     * 修改订单的状态
+     * @param orderid   订单id
+     * @param state     状态码
+     * @return
+     */
+    @RequestMapping("/updateOrderState.do")
+    public Map updateOrderState(@RequestParam int orderid,@RequestParam int state){
+        boolean b = orderService.updateOrderState(orderid, state);
+        StateSignal signal = new StateSignal();
+        if(b){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return  signal.getResult();
+    }
+
 }

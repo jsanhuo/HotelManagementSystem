@@ -1,5 +1,6 @@
 var pageNum=1;
-var pageSize=8;
+var pageSize=3;
+var l;
 
 $(document).ready(function(){
 	getStaffList();
@@ -15,6 +16,14 @@ $(document).ready(function(){
 
 })
 
+//判断对象/JSON是否为空 空返回1 非空返回0
+function isEmptyObject(e) {
+	var t;
+	for (t in e)
+		return 0;
+	return 1;
+}
+
 
 var list;
 function getStaffList(){
@@ -28,26 +37,31 @@ function getStaffList(){
 			"power":"3"
 		},
 		success:function(data){
-			var power=" ";
-			var htmlStr=" ";
-			var btnStr=" ";
-			list=data.list;
-			var l=0;
-			$("#pre").css("display","block");
-			$("#next").css("display","block");
-			$("#staffList").empty();
-			$("#staffList").append("<tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>")
-			for(i in list){
-				btnStr="<input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
-				htmlStr="<tr data-userid=\""+list[i].userid+"\"><td>"+list[i].useraccount+"</td><td>"+list[i].idnumber+"</td><td>"+list[i].username+"</td><td>"+list[i].age+"</td><td>"+power+"</td><td>"+list[i].phonenumber+"</td><td>"+btnStr+"</td></tr>";
-				$("#staffList").append(htmlStr);
-				l++;
-				console.log(htmlStr)
+			if(isEmptyObject(data.List)){
+				pageNum=pageNum-1;
+				getStaffList();
 			}
-			if(pageNum=="1") $("#pre").css("display","none");
-			if(pageSize>l) $("#next").css("display","none");
-
-			btnOn();
+			else{
+				var power=" ";
+				var htmlStr=" ";
+				var btnStr=" ";
+				list=data.List;
+				l=0;
+				$("#pre").css("display","block");
+				$("#next").css("display","block");
+				$("#staffList").empty();
+				$("#staffList").append("<tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>")
+				for(i in list){
+					btnStr="<input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
+					htmlStr="<tr data-userid=\""+list[i].userid+"\"><td>"+list[i].useraccount+"</td><td>"+list[i].idnumber+"</td><td>"+list[i].username+"</td><td>"+list[i].age+"</td><td>"+"员工"+"</td><td>"+list[i].phonenumber+"</td><td>"+btnStr+"</td></tr>";
+					$("#staffList").append(htmlStr);
+					//console.log(htmlStr);
+					l++;
+				}
+				if(pageNum=="1") $("#pre").css("display","none");
+				if(pageSize>l) $("#next").css("display","none");
+				btnOn();
+			}
 
 		},
 		error:function(){
@@ -60,6 +74,9 @@ function btnOn(){
 	$("input").filter("#delUser").on('click',function(event){
 		delUser(event);
 	});
+	$("input").filter("#setPageBtn").on('click',function(event){
+		setPage(event);
+	})
 }
 
 function getPre(){
@@ -69,9 +86,21 @@ function getPre(){
 
 function getNext(){
 	pageNum=pageNum+1;
-	getStaffList();
+	getStaffList();	
+}
+
+
+function setPage(){
+	
+	if($("#inputPage").val()<0 || $("#inputPage").val()==0)
+		alert("请输入正确页码");
+	else{
+		pageNum=$("#inputPage").val();
+		getStaffList();
+	}
 	
 }
+
 
 function delUser(event){
 	var userid=$(event.target).data("userid");
@@ -83,15 +112,17 @@ function delUser(event){
 			"userid":userid
 		},
 		success:function(data){
-			if(data.code==0){
-				alert("修改成功");
+				if(data.code==0){
+					alert("删除成功");
+				if(l==1)
+					pageNum=pageNum-1;
 				getStaffList();
 			}
 			else
-				alert("修改失败")
+				alert("删除失败")
 		},
 		error:function(){
-			alert("修改信息出现错误");
+			alert("删除出现错误");
 		}
 	})
 
@@ -110,7 +141,10 @@ function addUser(){
 		success:function(data){
 			if(data.code==0){
 				alert("添加成功");
-				window.location.reload();
+				$('#addUser').modal('toggle');
+				$("#inputAccount").val("");
+				$("#inputPwd").val("")
+				getStaffList();
 			}
 			else
 				alert("添加失败")

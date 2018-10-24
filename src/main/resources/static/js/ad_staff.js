@@ -32,6 +32,7 @@ function getStaffList(){
 			var htmlStr=" ";
 			var btnStr=" ";
 			list=data.list;
+			var l=0;
 			$("#pre").css("display","block");
 			$("#next").css("display","block");
 			$("#staffList").empty();
@@ -40,10 +41,11 @@ function getStaffList(){
 				btnStr="<input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
 				htmlStr="<tr data-userid=\""+list[i].userid+"\"><td>"+list[i].useraccount+"</td><td>"+list[i].idnumber+"</td><td>"+list[i].username+"</td><td>"+list[i].age+"</td><td>"+power+"</td><td>"+list[i].phonenumber+"</td><td>"+btnStr+"</td></tr>";
 				$("#staffList").append(htmlStr);
-				console.log(htmlStr)
+				console.log(htmlStr);
+				l++;
 			}
 			if(pageNum=="1") $("#pre").css("display","none");
-			if(pageSize>i) $("#next").css("display","none");
+			if(pageSize>l) $("#next").css("display","none");
 			btnOn();
 
 		},

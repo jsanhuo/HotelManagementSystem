@@ -37,10 +37,8 @@ function login(){
 				window.location.href=urlString;
 			}
 			else if(data.code=="-1"){
-				alert("验证码错误")
+				alert("验证码或密码错误")
 			}
-			else
-				alert("账号或密码错误")
 		},
 		error:function(){
 			alert("登录 发生错误");

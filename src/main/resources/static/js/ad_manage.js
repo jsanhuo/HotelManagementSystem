@@ -28,11 +28,12 @@ function getStaffList(){
 			var htmlStr=" ";
 			var btnStr=" ";
 			list=data.list;
+			var l=0;
 			$("#pre").css("display","block");
 			$("#next").css("display","block");
 			$("#staffList").empty();
 			$("#staffList").append("<tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>")
-			for(var i=0;i<pageSize;i++){
+			for(i in list){
 				if(list[i].power=="0") {
 					power="管理员";
 					btnStr=" ";
@@ -52,10 +53,11 @@ function getStaffList(){
 				
 				htmlStr="<tr data-userid=\""+list[i].userid+"\"><td>"+list[i].useraccount+"</td><td>"+list[i].idnumber+"</td><td>"+list[i].username+"</td><td>"+list[i].age+"</td><td>"+power+"</td><td>"+list[i].phonenumber+"</td><td>"+btnStr+"</td></tr>";
 				$("#staffList").append(htmlStr);
+				l++;
 				console.log(htmlStr)
 			}
 			if(pageNum=="1") $("#pre").css("display","none");
-			if(pageSize>i) $("#next").css("display","none");
+			if(pageSize>l) $("#next").css("display","none");
 			btnOn();
 
 		},

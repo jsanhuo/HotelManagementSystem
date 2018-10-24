@@ -25,7 +25,7 @@ function getStaffList(){
 		data:{
 			"pageNum":pageNum,
 			"pageSize":pageSize,
-			"power":"4"
+			"power":"3"
 		},
 		success:function(data){
 			var power=" ";
@@ -102,7 +102,7 @@ function addUser(){
 		data:{
 			"useraccount":$("#inputAccount").val(),
 			"password":$("#inputPwd").val(),
-			"power":"4"
+			"power":"3"
 		},
 		success:function(data){
 			if(data.code==0){

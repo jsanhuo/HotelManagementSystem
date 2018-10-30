@@ -37,11 +37,37 @@ function getStaffList(){
 			"power":"3"
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)){
-				pageNum=pageNum-1;
-				getStaffList();
+			if(data.code){
+				if(isEmptyObject(data.List)){
+					pageNum=pageNum-1;
+					getStaffList();
+				}
+				else{
+					var power=" ";
+					var htmlStr=" ";
+					var btnStr=" ";
+					list=data.List;
+					l=0;
+					$("#pre").css("display","block");
+					$("#next").css("display","block");
+					$("#staffList").empty();
+					$("#staffList").append("<tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>")
+					for(i in list){
+						btnStr="<input type=\"button\" id=\"delUser\" data-userid=\""+list[i].userid+"\" class=\"btn btn-danger\" value=\"删除\"/>"
+						htmlStr="<tr data-userid=\""+list[i].userid+"\"><td>"+list[i].useraccount+"</td><td>"+list[i].idnumber+"</td><td>"+list[i].username+"</td><td>"+list[i].age+"</td><td>"+"清洁工"+"</td><td>"+list[i].phonenumber+"</td><td>"+btnStr+"</td></tr>";
+						$("#staffList").append(htmlStr);
+						//console.log(htmlStr);
+						l++;
+					}
+					if(pageNum=="1") $("#pre").css("display","none");
+					if(pageSize>l) $("#next").css("display","none");
+					btnOn();
+				}
 			}
 			else{
+<<<<<<< HEAD
+				alert("获取员工列表失败");
+=======
 				var power=" ";
 				var htmlStr=" ";
 				var btnStr=" ";
@@ -61,7 +87,9 @@ function getStaffList(){
 				if(pageNum=="1") $("#pre").css("display","none");
 				if(pageSize>l) $("#next").css("display","none");
 				btnOn();
+>>>>>>> a958cf93ad08b59251ff2040d7d09b98cd673b37
 			}
+			
 
 		},
 		error:function(){
@@ -74,8 +102,8 @@ function btnOn(){
 	$("input").filter("#delUser").on('click',function(event){
 		delUser(event);
 	});
-	$("input").filter("#setPageBtn").on('click',function(event){
-		setPage(event);
+	$("input").filter("#setPageBtn").on('click',function( ){
+		setPage( );
 	})
 }
 

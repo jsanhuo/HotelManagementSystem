@@ -35,10 +35,18 @@ public class RoomServiceImpl implements RoomService {
     public boolean updateRoom(int roomid, String local, double money, int state, int type) {
         Room room = new Room();
         room.setRoomid(roomid);
-        room.setLocal(local);
-        room.setMoney(money);
-        room.setState(state);
-        room.setType(type);
+        if(!local.equals("null")){
+            room.setLocal(local);
+        }
+        if(money!=-1){
+            room.setMoney(money);
+        }
+        if(state!=-1){
+            room.setState(state);
+        }
+        if(type!=-1){
+            room.setType(type);
+        }
         int i = roomMapper.updateByPrimaryKeySelective(room);
         return i>0?true:false;
     }
@@ -63,5 +71,10 @@ public class RoomServiceImpl implements RoomService {
         }
         PageHelper.startPage(pageNum,pageSize);
         return roomMapper.selectRoomByStateType(room);
+    }
+
+    @Override
+    public Room getRoomById(int roomid) {
+        return roomMapper.selectByPrimaryKey(roomid);
     }
 }

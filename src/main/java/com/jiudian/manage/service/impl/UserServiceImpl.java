@@ -40,12 +40,24 @@ public class UserServiceImpl implements UserService {
     public boolean alterUser(int userid, String password, String username, int age, int power, String IDnumber,String phonenumber) {
         User user = new User();
         user.setUserid(userid);
-        user.setPassword(password);
-        user.setUsername(username);
-        user.setAge(age);
-        user.setPower(power);
-        user.setIdnumber(IDnumber);
-        user.setPhonenumber(phonenumber);
+        if(!password.equals("null")){
+            user.setPassword(password);
+        }
+        if(!username.equals("null")){
+            user.setUsername(username);
+        }
+        if(age!=-1){
+            user.setAge(age);
+        }
+        if(power!=-1){
+            user.setPower(power);
+        }
+        if(!IDnumber.equals("null")){
+            user.setIdnumber(IDnumber);
+        }
+        if(!phonenumber.equals("null")){
+            user.setPhonenumber(phonenumber);
+        }
         int i = userMapper.updateByPrimaryKeySelective(user);
         return i>0?true:false;
     }

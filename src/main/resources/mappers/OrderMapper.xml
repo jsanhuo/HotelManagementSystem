@@ -15,6 +15,13 @@
   <sql id="Base_Column_List" >
     orderid, householdname, ID, starttime, endtime, money, state, roomid, userid
   </sql>
+  <select id="getAllUser" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from orderlist
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

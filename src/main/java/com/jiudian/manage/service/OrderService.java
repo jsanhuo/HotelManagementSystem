@@ -1,5 +1,9 @@
 package com.jiudian.manage.service;
 
+import com.jiudian.manage.model.Order;
+
+import java.util.List;
+
 public interface OrderService {
     /**
      * 增加订单
@@ -29,9 +33,9 @@ public interface OrderService {
     public boolean updateOrderState(int orderid,int state);
 
     /**
-     *
+     *获取所有订单
      * @return
      */
-    public boolean getAllOrder();
+    public List<Order> getAllOrder(int pageNum, int pageSize);
 
 }

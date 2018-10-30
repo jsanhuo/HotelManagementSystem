@@ -1,5 +1,6 @@
 package com.jiudian.manage.controller;
 
+import com.jiudian.manage.model.Order;
 import com.jiudian.manage.service.OrderService;
 import com.jiudian.manage.service.impl.OrderServiceImpl;
 import com.jiudian.manage.until.State;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -73,6 +75,23 @@ public class OrderController {
         if(b){
             signal.put(State.SuccessCode);
             signal.put(State.SuccessMessage);
+        }else {
+            signal.put(State.ErrorCode);
+            signal.put(State.ErrorMessage);
+        }
+        return  signal.getResult();
+    }
+
+    @RequestMapping("/getAllOrder.do")
+    public Map getAllOrder(@RequestParam int pageNum,@RequestParam int pageSize){
+        List<Order> allOrder = orderService.getAllOrder(pageNum, pageSize);
+        StateSignal signal = new StateSignal();
+        if(allOrder!=null){
+            signal.put(State.SuccessCode);
+            signal.put(State.SuccessMessage);
+            signal.put("List",allOrder);
+            signal.put("pageNum",pageNum);
+            signal.put("pageSize",pageSize);
         }else {
             signal.put(State.ErrorCode);
             signal.put(State.ErrorMessage);

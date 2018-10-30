@@ -89,7 +89,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/updateUser.do")
-    public Map updateUser(@RequestParam int userid,@RequestParam String password,@RequestParam String username,@RequestParam int age,@RequestParam int power,@RequestParam String IDnumber,@RequestParam String phonenumber){
+    public Map updateUser(@RequestParam int userid,@RequestParam(required = false,defaultValue = "null") String password,@RequestParam(required = false,defaultValue = "null") String username,@RequestParam(required = false,defaultValue = "-1") int age,@RequestParam(required = false,defaultValue = "-1") int power,@RequestParam(required = false,defaultValue = "null") String IDnumber,@RequestParam(required = false,defaultValue = "null") String phonenumber){
         boolean upd = userService.alterUser(userid, password, username, age, power, IDnumber,phonenumber);
         StateSignal signal = new StateSignal();
         if(upd){

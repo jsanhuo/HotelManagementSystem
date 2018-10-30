@@ -48,5 +48,12 @@ public interface RoomService {
      */
     public List<Room> getRoomByState(int state,int type,int pageNum,int pageSize);
 
+    /**
+     * 通过房间id获取房间信息
+     * @param roomid 房间id
+     * @return
+     */
+    public Room getRoomById(int roomid);
+
 
 }

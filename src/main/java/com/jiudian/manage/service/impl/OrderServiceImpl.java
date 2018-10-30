@@ -1,5 +1,6 @@
 package com.jiudian.manage.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.jiudian.manage.mapper.OrderMapper;
 import com.jiudian.manage.mapper.RoomMapper;
 import com.jiudian.manage.model.Order;
@@ -8,6 +9,8 @@ import com.jiudian.manage.service.OrderService;
 import com.jiudian.manage.until.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -91,7 +94,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean getAllOrder() {
-        return false;
+    public List<Order> getAllOrder(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return orderMapper.getAllUser();
     }
 }

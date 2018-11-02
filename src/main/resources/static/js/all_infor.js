@@ -22,6 +22,7 @@ $(document).ready(function(){
 		changeTab();
 	});
 	getInfo();
+	getSalary();
 	$("#alterInfoBtn").click(function(){
 		alterInfo();
 	});
@@ -164,5 +165,44 @@ function alterPwd(){
 				alert("修改密码出现错误");
 			}
 		})
+	}
+}
+
+function getSalary(){
+	if(power!="0"){
+		$("#showS").css("display","block");
+		$("#showC").css("display","block");
+		$.ajax({
+			type:"POST",
+			url:"../config/updateConfig.do",
+			dataType:"JSON",
+			data:{},
+			success:function(data){
+				if(code=="0"){
+					var config=data.config;
+					if(power=="1"){
+						$("#salary").text(config.managesalary);
+						$("#commission").text(config.manage);
+					}
+					else if(power=="2"){
+						$("#salary").text(config.staffsalary);
+						$("#commission").text(config.staff);
+					}
+					else{
+						$("#salary").text(config.cleanersalary);
+						$("#commission").text(config.cleaner);
+					}
+					
+				}
+				else{
+					alert("获取配置错误");
+				}
+
+			},
+			error:function(){
+				alert("获取配置发生错误")
+			}
+
+		});
 	}
 }

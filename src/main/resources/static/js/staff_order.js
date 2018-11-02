@@ -41,7 +41,7 @@ function getorderList(){
 				for(i in list){
 					if(list[i].state=="0"){
 						state="未付款";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"setPaied\" value=\"已收款\">";
+						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"setPaied\" value=\"已收款\"> <input class=\"btn btn-danger\"  data-orderid=\""+list[i].orderid+"\" id=\"setNone\" value=\"取消\">";
 					}
 					else if(list[i].state=="1"){
 						state="已付款";
@@ -84,6 +84,9 @@ function btnOn(){
 	});
 	$("input").filter("#setFinish").on('click',function(event){
 		setState(event,"2");
+	});
+	$("input").filter("#setNone").on('click',function(event){
+		setState(event,"3");
 	});
 
 }

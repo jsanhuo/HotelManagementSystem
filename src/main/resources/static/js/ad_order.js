@@ -4,6 +4,7 @@ var l;
 
 $(document).ready(function(){
 	getorderList();
+	getConfig();
 	$("#pre").on('click',function(){
 		getPre();
 	});
@@ -173,4 +174,28 @@ function showRoom(event){
 			alert("获取信息出现错误");
 		}
 	})
+}
+
+function getConfig(){
+	$.ajax({
+		type:"POST",
+		url:"../config/updateConfig.do",
+		dataType:"JSON",
+		data:{},
+		success:function(data){
+			if(code=="0"){
+				var config=data.config;
+				$("#totalMoney").text(config.totalmoney);
+				$("#totalRoom").text(config.totalroom);
+			}
+			else{
+				alert("获取配置错误");
+			}
+
+		},
+		error:function(){
+			alert("获取配置发生错误")
+		}
+
+	});
 }

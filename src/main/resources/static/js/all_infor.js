@@ -149,12 +149,7 @@ function alterPwd(){
 			dataType:"JSON",
 			data:{
 				"userid":userid,
-				"password":newPwd,
-				"username":info.username,
-				"age":info.age,
-				"power":power,
-				"IDnumber":info.idnumber,
-				"phonenumber":info.phonenumber
+				"password":newPwd
 
 			},
 			success:function(data){

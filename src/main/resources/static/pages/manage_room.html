@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/myCenter.css">
-  <link rel="stylesheet" type="text/css" href="../css/footer.css">
   <link rel="stylesheet" type="text/css" href="../css/pages.css">
 
 </head>
@@ -13,7 +12,10 @@
 <body>
 <div class="col-md-8 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 3rem">
   <div class="table-responsive">
-    <input type="button" data-toggle="modal" data-target="#addRoom" class="btn btn-success" value="添加房间"/>
+    <a href="#" style="font-size:1.7rem" data-toggle="modal" data-target="#addRoom" >
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span>添加房间</span>
+    </a>
     <table class="table table-bordered table-hover" style="margin-top: 10px" id="roomList">
     <tr><th>位置</th><th>价格</th><th>状态</th><th>类型</th><th>操作</th></tr>
     </table>
@@ -64,6 +66,42 @@
           </div>
           <div class="form-group alterinfo">
             <input type="button" id="addRoomBtn" class="btn btn-success" value="确定"/>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="alterRoom" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">修改房间</h4>
+      </div>
+      <div class="modal-body" style="width: 80%;padding-left:20%">
+          <div class="form-group alterinfo" style="display:none">
+            <input type="text" class="form-control" id="reinputid">
+          </div>
+          <div class="form-group alterinfo">请输入位置：
+            <label for="reinputLocal">inputPrice</label>
+            <input type="text" name="reinputLocal" class="form-control" id="reinputLocal">
+          </div>
+          <div class="form-group alterinfo">请输入价格：
+            <label for="reinputPrice">inputPrice</label>
+            <input type="text" name="reinputPrice" class="form-control" id="reinputPrice">
+          </div>
+          <div class="form-group alterinfo">请选择类型：
+            <select class="form-control" id="reinputType">
+            <option value="1">单人间</option>
+            <option value="2">双人间</option>
+            <option value="3">大床房</option>
+            <option value="4">套房</option>
+      </select>
+          </div>
+          <div class="form-group alterinfo">
+            <input type="button" id="setRoomBtn" class="btn btn-success" value="确定"/>
           </div>
       </div>
 

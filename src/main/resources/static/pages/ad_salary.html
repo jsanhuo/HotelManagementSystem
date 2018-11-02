@@ -1,1 +1,73 @@
-����Ա ����
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/myCenter.css">
+  <link rel="stylesheet" type="text/css" href="../css/pages.css">
+
+</head>
+
+<body>
+<div class="col-md-6 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 3rem">
+  <div class="table-responsive" id="showConfigDiv">
+    <a href="#" id="showConfig" style="font-size:1.7rem">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span>更改配置</span>
+    </a>
+    <table class="table table-bordered table-hover" style="margin-top: 10px" id="configList">
+    <tr><th  style="width: 100px">职位</th><th>底薪</th><th>提成</th></tr>
+    </table>
+  </div>
+  <div class="table-responsive" id="alterConfigDiv" style="display: none">
+    <a href="#" id="alterConfig" style="font-size:1.7rem">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span>返回</span>
+    </a>
+    <table class="table table-bordered table-hover" style="margin-top: 10px">
+    <tr><th style="width: 100px">职位</th><th>底薪</th><th>提成</th></tr>
+    <tr>
+      <th>经理</th>
+      <th>
+        <input type="text" class="form-control" id="inputMS">
+      </th>
+      <th>
+        <input type="text" class="form-control" id="inputM">
+      </th>
+    </tr>
+    <tr>
+      <th>员工</th>
+      <th>
+        <input type="text" class="form-control" id="inputSS">
+      </th>
+      <th>
+        <input type="text" class="form-control" id="inputS">
+      </th>
+    </tr>
+    <tr>
+      <th>清洁工</th>
+      <th>
+        <input type="text" class="form-control" id="inputCS">
+      </th>
+      <th>
+        <input type="text" class="form-control" id="inputC">
+      </th>
+    </tr>
+    </table>
+    <input style="float: right" type="button" id="alterConfigBtn" class="btn btn-success" value="确定"/>
+  </div>
+
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/ad_salary.js"></script>

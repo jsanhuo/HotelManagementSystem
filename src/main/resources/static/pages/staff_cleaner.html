@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/myCenter.css">
-  <link rel="stylesheet" type="text/css" href="../css/footer.css">
   <link rel="stylesheet" type="text/css" href=s"../css/pages.css">
 
 </head>
@@ -13,7 +12,10 @@
 <body>
 <div class="col-md-11 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 3rem">
   <div class="table-responsive">
-    <input type="button" data-toggle="modal" data-target="#addUser" class="btn btn-success" value="添加清洁工"/>
+    <a href="#" style="font-size:1.7rem" data-toggle="modal" data-target="#addUser" >
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span>添加清洁工</span>
+    </a>
     <table class="table table-bordered table-hover" style="margin-top: 10px" id="staffList">
     <tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>
     </table>

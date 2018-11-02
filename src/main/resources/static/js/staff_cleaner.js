@@ -24,6 +24,13 @@ function isEmptyObject(e) {
 	return 1;
 }
 
+//判断字符串是否为空 空返回1 非空返回0
+function isEmptyString(str){
+	if(str=='null'||str=='')
+		return 1;
+	return 0;
+}
+
 
 var list;
 function getStaffList(){
@@ -65,9 +72,7 @@ function getStaffList(){
 				}
 			}
 			else{
-<<<<<<< HEAD
 				alert("获取员工列表失败");
-=======
 				var power=" ";
 				var htmlStr=" ";
 				var btnStr=" ";
@@ -87,7 +92,6 @@ function getStaffList(){
 				if(pageNum=="1") $("#pre").css("display","none");
 				if(pageSize>l) $("#next").css("display","none");
 				btnOn();
->>>>>>> a958cf93ad08b59251ff2040d7d09b98cd673b37
 			}
 			
 
@@ -157,28 +161,33 @@ function delUser(event){
 }
 
 function addUser(){
-	$.ajax({
-		type:"POST",
-		url:"../user/addUser.do",
-		dataType:"JSON",
-		data:{
-			"useraccount":$("#inputAccount").val(),
-			"password":$("#inputPwd").val(),
-			"power":"3"
-		},
-		success:function(data){
-			if(data.code==0){
-				alert("添加成功");
-				$('#addUser').modal('toggle');
-				$("#inputAccount").val("");
-				$("#inputPwd").val("")
-				getStaffList();
+	if(isEmptyString($("#inputAccount").val())||isEmptyString($("#inputPwd").val()))
+		alert("请填写全内容");
+	else{
+		$.ajax({
+			type:"POST",
+			url:"../user/addUser.do",
+			dataType:"JSON",
+			data:{
+				"useraccount":$("#inputAccount").val(),
+				"password":$("#inputPwd").val(),
+				"power":"3"
+			},
+			success:function(data){
+				if(data.code==0){
+					alert("添加成功");
+					$('#addUser').modal('toggle');
+					$("#inputAccount").val("");
+					$("#inputPwd").val("")
+					getStaffList();
+				}
+				else
+					alert("添加失败")
+			},
+			error:function(){
+				alert("添加用户出现错误");
 			}
-			else
-				alert("添加失败")
-		},
-		error:function(){
-			alert("添加用户出现错误");
-		}
-	})
+		})
+	}
+	
 }

@@ -30,7 +30,9 @@ function getroomList(){
 		dataType:"JSON",
 		data:{
 			"state":"3",
-			"type":"-1"		
+			"type":"-1",
+			"pageNum":pageNum,
+			"pageSize":pageSize			
 		},
 		success:function(data){
 			if(isEmptyObject(data.List)){
@@ -81,27 +83,25 @@ function btnOn(){;
 	$("input").filter("#setPageBtn").on('click',function( ){
 		setPage( );
 	});
-	$("input").filter("#setRoom").on('click',function( ){
-		setRoom( );
+	$("input").filter("#setRoom").on('click',function(event ){
+		setRoom(event);
 	});
 }
 
-function setRoom(){
+function setRoom(event){
+	var roomid=$(event.target).data("roomid");
 	$.ajax({
 		type:"POST",
 		url:"../room/updateRoom.do",
 		dataType:"JSON",
 		data:{
-			"roomid":info.roomid,
-			"local":info.local,
-			"money":info.money,
-			"state":"1",
-			"type":info.type
+			"roomid":roomid,
+			"state":"1"
 		},
 		success:function(data){
 			if(data.code==0){
 				alert("修改成功");
-				getStaffList();
+				getRoomList();
 			}
 			else
 				alert("修改失败")

@@ -10,10 +10,10 @@
 </head>
 
 <body>
-<div class="col-md-11 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 3rem">
+<div class="col-md-8 col-xs-11 nopadding" style="padding-top:3rem;padding-left: 3rem">
   <div class="table-responsive">
-    <table class="table table-bordered table-hover" style="margin-top: 10px" id="staffList">
-    <tr><th>账号</th><th>员工号</th><th>姓名</th><th>年龄</th><th>职位</th><th>联系方式</th><th>操作</th></tr>
+    <table class="table table-bordered table-hover" style="margin-top: 10px" id="orderList">
+    <tr><th>入住人</th><th>身份证号</th><th>开始时间</th><th>结束时间</th><th>总金额</th><th>状态</th><th>操作</th></tr>
     </table>
     <div class="col-md-12">
       <form class="form-inline">
@@ -35,8 +35,26 @@
 </div>
 
 </body>
-
 </html>
+
+<div class="modal fade" id="showRoomT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">房间详情</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover" style="margin-top: 10px" id="roomTable">
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/ad_manage.js"></script>
+<script type="text/javascript" src="../js/ad_order.js"></script>
+

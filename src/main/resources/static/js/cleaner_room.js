@@ -52,7 +52,6 @@ function getroomList(){
 				$("#roomList").empty();
 				$("#roomList").append("<tr><th>位置</th><th>价格</th><th>状态</th><th>类型</th><th>操作</th></tr>");
 				state="未清扫";
-				btnStr="<input class=\"btn btn-success\" data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"已清扫\">";
 				for(i in list){		
 					if(list[i].type=="1")
 						type="单人间";
@@ -62,7 +61,7 @@ function getroomList(){
 						type="大床房";
 					else
 						type="套房"
-
+					btnStr="<input class=\"btn btn-success\" data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"已清扫\">";
 					htmlStr="<tr data-roomid=\""+list[i].roomid+"\"><td>"+list[i].local+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+type+"</td><td>"+btnStr+"</td></tr>";
 					$("#roomList").append(htmlStr);
 					l++;

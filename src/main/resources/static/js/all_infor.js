@@ -178,7 +178,7 @@ function getSalary(){
 			dataType:"JSON",
 			data:{},
 			success:function(data){
-				if(code=="0"){
+				if(data.code=="0"){
 					var config=data.config;
 					if(power=="1"){
 						$("#salary").text(config.managesalary);

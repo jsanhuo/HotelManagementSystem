@@ -14,6 +14,14 @@ $(document).ready(function(){
 
 })
 
+//判断对象/JSON是否为空 空返回1 非空返回0
+function isEmptyObject(e) {
+	var t;
+	for (t in e)
+		return 0;
+	return 1;
+}
+
 var list;
 function getorderList(){
 	$.ajax({
@@ -42,19 +50,19 @@ function getorderList(){
 				for(i in list){
 					if(list[i].state=="0"){
 						state="未付款";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\">";
+						btnStr="<input  type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\">";
 					}
 					else if(list[i].state=="1"){
 						state="已付款";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> ";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> ";
 					}
 					else if(list[i].state=="2"){
 						state="已完成";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input type=\"button\" class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
 					}
 					else{
 						state="已取消";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
+						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input type=\"button\"  class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
 					}
 					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+list[i].starttime+"</td><td>"+list[i].endtime+"</td><td>"+money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
 					$("#orderList").append(htmlStr);
@@ -179,7 +187,7 @@ function showRoom(event){
 function getConfig(){
 	$.ajax({
 		type:"POST",
-		url:"../config/updateConfig.do",
+		url:"../config/getConfig.do",
 		dataType:"JSON",
 		data:{},
 		success:function(data){

@@ -61,7 +61,7 @@ function getroomList(){
 						type="大床房";
 					else
 						type="套房"
-					btnStr="<input class=\"btn btn-success\" data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"已清扫\">";
+					btnStr="<input type=\"button\"  class=\"btn btn-success\" data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"已清扫\">";
 					htmlStr="<tr data-roomid=\""+list[i].roomid+"\"><td>"+list[i].local+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+type+"</td><td>"+btnStr+"</td></tr>";
 					$("#roomList").append(htmlStr);
 					l++;

@@ -65,19 +65,19 @@ function getroomList(){
 				for(i in list){
 					if(list[i].state=="0"){
 						state="停用";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"setStart\" value=\"开始使用\"> <input class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\"> <input class=\"btn btn-danger\" data-roomid=\""+list[i].roomid+"\" value=\"删除\" id=\"delRoom\">";
+						btnStr="<input type=\"button\" class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"setStart\" value=\"开始使用\"> <input type=\"button\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\"> <input type=\"button\" class=\"btn btn-danger\" data-roomid=\""+list[i].roomid+"\" value=\"删除\" id=\"delRoom\">";
 					}
 					else if(list[i].state=="1"){
 						state="未预定";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"setStop\" value=\"改为停用\"> <input class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\"> <input class=\"btn btn-danger\" data-roomid=\""+list[i].roomid+"\" value=\"删除\" id=\"delRoom\">";
+						btnStr="<input type=\"button\" class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"setStop\" value=\"改为停用\"> <input type=\"button\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\"> <input type=\"button\" class=\"btn btn-danger\" data-roomid=\""+list[i].roomid+"\" value=\"删除\" id=\"delRoom\">";
 					}
 					else if(list[i].state=="2"){
 						state="已预定(入住)";
-						btnStr="<input class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\">";
+						btnStr="<input type=\"button\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\">";
 					}
 					else{
 						state="待清扫";
-						btnStr="<input class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"setStop\" value=\"改为停用\"> <input class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\"> <input class=\"btn btn-danger\" data-roomid=\""+list[i].roomid+"\" value=\"删除\" id=\"delRoom\">";
+						btnStr="<input type=\"button\" class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"setStop\" value=\"改为停用\"> <input type=\"button\" class=\"btn btn-success\"  data-toggle=\"modal\" data-target=\"#alterRoom\"  data-roomid=\""+list[i].roomid+"\" id=\"setRoom\" value=\"修改信息\"> <input type=\"button\" class=\"btn btn-danger\" data-roomid=\""+list[i].roomid+"\" value=\"删除\" id=\"delRoom\">";
 					}
 
 					if(list[i].type=="1")

@@ -28,7 +28,7 @@ function getConfig(){
 		dataType:"JSON",
 		data:{},
 		success:function(data){
-			if(code=="0"){
+			if(data.code=="0"){
 				config=data.config;
 				var htmlStr="<tr><td>经理</td><td>"+config.managesalary+"</td><td>"+config.manage+"</td></tr>"+
 				"<tr><td>经理</td><td>"+config.staffsalary+"</td><td>"+config.staff+"</td></tr>"+

@@ -15,6 +15,10 @@ spring:
           url: jdbc:mysql://127.0.0.1:3306/jiudianmanage?useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
           username: root
           password: 123456
+#          driver-class-name: com.mysql.jdbc.Driver
+#          url: jdbc:mysql://127.0.0.1:3306/jiudianmanage?useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+#          username: root
+#          password: root
           initial-size: 1
           min-idle: 1
           max-active: 20

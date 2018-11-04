@@ -9,6 +9,7 @@
 var staffid=$.getData("userid");
 var pageNum=1;
 var pageSize=3;
+var choose;
 var l;
 
 $(document).ready(function(){
@@ -150,7 +151,7 @@ function setPage(){
 
 function chooseRoom(event){
 	var roomid=$(event.target).data("roomid");
-	$("#inputRoom").val(roomid);
+	choose=roomid;
 	for(i in list){
 		if(list[i].roomid=roomid){
 			$("span").filter("#inputLocal").text(list[i].local);
@@ -168,7 +169,7 @@ function addOrder(){
 			dataType:"JSON",
 			data:{
 				"userid":staffid,
-				"roomid":$("#inputRoom").val(),
+				"roomid":choose,
 				"householdname":$("#inputName").val(),
 				"id":$("#inputId").val(),
 				"starttime":$("#dateStart").val(),

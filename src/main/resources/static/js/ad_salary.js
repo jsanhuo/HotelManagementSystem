@@ -24,7 +24,7 @@ function isEmptyString(str){
 function getConfig(){
 	$.ajax({
 		type:"POST",
-		url:"../config/updateConfig.do",
+		url:"../config/getConfig.do",
 		dataType:"JSON",
 		data:{},
 		success:function(data){

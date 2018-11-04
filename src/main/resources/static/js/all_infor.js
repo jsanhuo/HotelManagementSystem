@@ -174,7 +174,7 @@ function getSalary(){
 		$("#showC").css("display","block");
 		$.ajax({
 			type:"POST",
-			url:"../config/updateConfig.do",
+			url:"../config/getConfig.do",
 			dataType:"JSON",
 			data:{},
 			success:function(data){

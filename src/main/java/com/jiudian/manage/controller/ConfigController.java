@@ -49,7 +49,7 @@ public class ConfigController {
      * @return
      */
     @RequestMapping(value = "/updateConfig.do")
-    public Map updateConfig(@RequestParam double managesalary,@RequestParam double  staffsalary,@RequestParam double cleanerssalary,@RequestParam double manage,@RequestParam double staff,@RequestParam double cleaner,@RequestParam double totalmoney,@RequestParam double totalroom){
+    public Map updateConfig(@RequestParam double managesalary,@RequestParam double  staffsalary,@RequestParam double cleanerssalary,@RequestParam double manage,@RequestParam double staff,@RequestParam double cleaner,@RequestParam(required = false,defaultValue = "-1") double totalmoney,@RequestParam(required = false,defaultValue = "-1") double totalroom){
         boolean update = configService.update(managesalary, staffsalary, cleanerssalary, manage, staff, cleaner, totalmoney, totalroom);
         StateSignal signal = new StateSignal();
         if(update){

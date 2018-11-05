@@ -1,5 +1,5 @@
 var pageNum=1;
-var pageSize=3;
+var pageSize=8;
 var l;
 
 $(document).ready(function(){

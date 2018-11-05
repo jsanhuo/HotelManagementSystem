@@ -257,7 +257,7 @@ function addRoom(){
 			dataType:"JSON",
 			data:{
 				"local":$("#inputLocal").val(),
-				"money":$("#inputLocal").val(),
+				"money":$("#inputPrice").val(),
 				"state":"1",
 				"type":$("#inputType").val()
 			},

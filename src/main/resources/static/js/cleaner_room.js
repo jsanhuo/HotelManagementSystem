@@ -35,7 +35,7 @@ function getroomList(){
 			"pageSize":pageSize			
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)||pageNum>0){
+			if(isEmptyObject(data.List)&&pageNum>0){
 				pageNum=pageNum-1;
 				getroomList();
 			}

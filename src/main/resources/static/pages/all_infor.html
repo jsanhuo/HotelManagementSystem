@@ -122,8 +122,10 @@
                 console.log(data);
                 if(data.code==0)
                   alert("修改头像成功!");
+
                 else
                   alert("修改头像失败!");
+                window.local.reload();
               }); 
               return false;
               //必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 

@@ -103,7 +103,7 @@ function getroomList(){
 						type="大床房";
 					else
 						type="套房"
-					btnStr="<a href=\"#\" data-roomid=\""+list[i].roomid+"\" id=\"chooseRoomBtn\" data-toggle=\"modal\" data-target=\"#chooseRoom\" ><span class=\"glyphicon glyphicon-pencil\"></span><span>生成订单</span></a>";
+					btnStr="<input type=\"button\" class=\"btn btn-success\" data-roomid=\""+list[i].roomid+"\" id=\"chooseRoomBtn\" data-toggle=\"modal\" data-target=\"#chooseRoom\" value=\"生成订单\">";
 					htmlStr="<tr data-roomid=\""+list[i].roomid+"\"><td>"+list[i].local+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+type+"</td><td>"+btnStr+"</td></tr>";
 					$("#roomList").append(htmlStr);
 					l++;
@@ -124,9 +124,9 @@ function btnOn(){;
 	$("input").filter("#setPageBtn").on('click',function( ){
 		setPage( );
 	});
-	$("a").filter("#chooseRoomBtn").on('click',function(event){
+	$("input").filter("#chooseRoomBtn").on('click',function(event){
 		chooseRoomBtn(event);
-	})
+	});
 }
 
 function getPre(){

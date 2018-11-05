@@ -36,7 +36,7 @@ var list;
 function getStaffList(){
 	$.ajax({
 		type:"post",
-		url:"../user/getAllUser.do",
+		url:"../user/getUserByPower",
 		dataType:"JSON",
 		data:{
 			"pageNum":pageNum,
@@ -45,7 +45,7 @@ function getStaffList(){
 		},
 		success:function(data){
 			if(data.code){
-				if(isEmptyObject(data.List)||pageNum>0){
+				if(isEmptyObject(data.List)&&pageNum>0){
 					pageNum=pageNum-1;
 					getStaffList();
 				}

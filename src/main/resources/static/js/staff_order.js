@@ -43,12 +43,16 @@ function getorderList(){
 				var htmlStr=" ";
 				var btnStr=" ";
 				var state=" ";
+				var sdate;
+				var edate;
 				l=0;
 				$("#pre").css("display","block");
 				$("#next").css("display","block");
 				$("#orderList").empty();
 				$("#orderList").append("<tr><th>入住人</th><th>身份证号</th><th>开始时间</th><th>结束时间</th><th>总金额</th><th>状态</th><th>操作</th></tr>")
 				for(i in list){
+					sdate=/\d{4}-\d{1,2}-\d{1,2}/g.exec(list[i].starttime);
+					edate=/\d{4}-\d{1,2}-\d{1,2}/g.exec(list[i].endtime);
 					if(list[i].state=="0"){
 						state="未付款";
 						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input type=\"button\"  class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"setPaied\" value=\"已收款\"> <input type=\"button\"  class=\"btn btn-danger\"  data-orderid=\""+list[i].orderid+"\" id=\"setNone\" value=\"取消\">";
@@ -65,7 +69,7 @@ function getorderList(){
 						state="已取消";
 						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\">";
 					}
-					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+list[i].starttime+"</td><td>"+list[i].endtime+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
+					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+sdate+"</td><td>"+edate+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
 					$("#orderList").append(htmlStr);
 					l++;
 				}

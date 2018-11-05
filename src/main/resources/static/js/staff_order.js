@@ -34,7 +34,7 @@ function getorderList(){
 			"pageSize":pageSize		
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)||pageNum>0){
+			if(isEmptyObject(data.List)&&pageNum>0){
 				pageNum=pageNum-1;
 				getorderList();
 			}
@@ -160,6 +160,7 @@ function showRoom(event){
 				var htmlStr=" ";
 				var state=" ";
 				var type=" ";
+				var room=data.room;
 				$("#roomTable").empty();
 				if(room.state=="0")
 					state="停用";

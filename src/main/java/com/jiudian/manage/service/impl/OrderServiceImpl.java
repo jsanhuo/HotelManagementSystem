@@ -1,8 +1,10 @@
 package com.jiudian.manage.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.jiudian.manage.mapper.ConfigMapper;
 import com.jiudian.manage.mapper.OrderMapper;
 import com.jiudian.manage.mapper.RoomMapper;
+import com.jiudian.manage.model.Config;
 import com.jiudian.manage.model.Order;
 import com.jiudian.manage.model.Room;
 import com.jiudian.manage.service.OrderService;
@@ -18,6 +20,8 @@ public class OrderServiceImpl implements OrderService {
     OrderMapper orderMapper;
     @Autowired
     RoomMapper roomMapper;
+    @Autowired
+    ConfigMapper configMapper;
 
     @Override
     public boolean addOrder(String householdname, String id, String starttime, String endtime, int roomid, int userid) {
@@ -33,7 +37,14 @@ public class OrderServiceImpl implements OrderService {
         order.setRoomid(roomid);
         order.setUserid(userid);
         order.setState(0);
-        order.setMoney(TimeUtil.getBetweenDay(starttime,endtime)*room.getMoney());
+        double money = TimeUtil.getBetweenDay(starttime,endtime)*room.getMoney();
+        order.setMoney(money);
+
+        Config config = configMapper.selectByPrimaryKey(1);
+        config.setTotalroom(config.getTotalroom()+1);
+        config.setTotalmoney(config.getTotalmoney()+money);
+        configMapper.updateByPrimaryKeySelective(config);
+
         int insert = orderMapper.insertSelective(order);
         if(insert>0){
             Room room1 = new Room();

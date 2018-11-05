@@ -26,9 +26,13 @@ public class ConfigServiceImpl implements ConfigService {
         config.setManage(manage);
         config.setStaff(staff);
         config.setCleaner(cleaner);
-        config.setTotalmoney(totalmoney);
-        config.setTotalroom(totalroom);
-        int i = configMapper.updateByPrimaryKey(config);
+        if(totalmoney!=-1){
+            config.setTotalmoney(totalmoney);
+        }
+        if(totalroom!=-1){
+            config.setTotalroom(totalroom);
+        }
+        int i = configMapper.updateByPrimaryKeySelective(config);
         return i>0?true:false;
     }
 }

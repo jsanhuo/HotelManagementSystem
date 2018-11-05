@@ -30,9 +30,9 @@ function getConfig(){
 		success:function(data){
 			if(data.code=="0"){
 				config=data.config;
-				var htmlStr="<tr><td>经理</td><td>"+config.managesalary+"</td><td>"+config.manage+"</td></tr>"+
-				"<tr><td>经理</td><td>"+config.staffsalary+"</td><td>"+config.staff+"</td></tr>"+
-				"<tr><td>经理</td><td>"+config.cleanersalary+"</td><td>"+config.cleaner+"</td></tr>";
+				var htmlStr="<tr><td>经理</td><td>"+config.manage+"</td><td>"+config.managesalary+"</td></tr>"+
+				"<tr><td>员工</td><td>"+config.staff+"</td><td>"+config.staffsalary+"</td></tr>"+
+				"<tr><td>清洁工</td><td>"+config.cleaner+"</td><td>"+config.cleanersalary+"</td></tr>";
 				$("#configList").append(htmlStr);
 				$("#inputMS").val(config.manage);
 				$("#inputSS").val(config.staff);

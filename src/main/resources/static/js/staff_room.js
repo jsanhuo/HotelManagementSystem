@@ -77,7 +77,7 @@ function getroomList(){
 			"pageSize":pageSize			
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)){
+			if(isEmptyObject(data.List)&&pageNum>0){
 				pageNum=pageNum-1;
 				getroomList();
 			}
@@ -125,7 +125,7 @@ function btnOn(){;
 		setPage( );
 	});
 	$("a").filter("#chooseRoomBtn").on('click',function(event){
-		chooseRoom(event);
+		chooseRoomBtn(event);
 	})
 }
 

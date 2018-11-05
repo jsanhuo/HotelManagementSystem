@@ -33,7 +33,7 @@ function getorderList(){
 			"pageSize":pageSize		
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)){
+			if(isEmptyObject(data.List)&&pageNum>0){
 				pageNum=pageNum-1;
 				getorderList();
 			}
@@ -64,7 +64,7 @@ function getorderList(){
 						state="已取消";
 						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\"> <input type=\"button\"  class=\"btn btn-success\"  data-orderid=\""+list[i].orderid+"\" id=\"delOrder\" value=\"删除\">";
 					}
-					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+list[i].starttime+"</td><td>"+list[i].endtime+"</td><td>"+money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
+					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+list[i].starttime+"</td><td>"+list[i].endtime+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
 					$("#orderList").append(htmlStr);
 					l++;
 				}
@@ -128,7 +128,7 @@ function delOrder(event){
 					alert("删除成功");
 				if(l==1)
 					pageNum=pageNum-1;
-				getroomList();
+				getorderList();
 			}
 			else
 				alert("删除失败")
@@ -191,7 +191,7 @@ function getConfig(){
 		dataType:"JSON",
 		data:{},
 		success:function(data){
-			if(code=="0"){
+			if(data.code=="0"){
 				var config=data.config;
 				$("#totalMoney").text(config.totalmoney);
 				$("#totalRoom").text(config.totalroom);

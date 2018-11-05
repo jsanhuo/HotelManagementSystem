@@ -35,7 +35,7 @@ function getroomList(){
 			"pageSize":pageSize			
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)){
+			if(isEmptyObject(data.List)||pageNum>0){
 				pageNum=pageNum-1;
 				getroomList();
 			}
@@ -100,10 +100,12 @@ function setRoom(event){
 		success:function(data){
 			if(data.code==0){
 				alert("修改成功");
-				getRoomList();
+				getroomList();
 			}
-			else
-				alert("修改失败")
+			else{
+				alert("修改失败");
+				getroomList();
+			}
 		},
 		error:function(){
 			alert("修改信息出现错误");

@@ -45,7 +45,7 @@ function getStaffList(){
 		},
 		success:function(data){
 			if(data.code){
-				if(isEmptyObject(data.List)){
+				if(isEmptyObject(data.List)||pageNum>0){
 					pageNum=pageNum-1;
 					getStaffList();
 				}

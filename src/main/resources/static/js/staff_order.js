@@ -34,7 +34,7 @@ function getorderList(){
 			"pageSize":pageSize		
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)){
+			if(isEmptyObject(data.List)||pageNum>0){
 				pageNum=pageNum-1;
 				getorderList();
 			}
@@ -65,7 +65,7 @@ function getorderList(){
 						state="已取消";
 						btnStr="<input type=\"button\"  class=\"btn btn-info\" data-roomid=\""+list[i].roomid+"\" id=\"showRoom\"  data-toggle=\"modal\" data-target=\"#showRoomT\" value=\"查看房间\">";
 					}
-					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+list[i].starttime+"</td><td>"+list[i].endtime+"</td><td>"+money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
+					htmlStr="<tr data-orderid=\""+list[i].orderid+"\"><td>"+list[i].householdname+"</td><td>"+list[i].id+"</td><td>"+list[i].starttime+"</td><td>"+list[i].endtime+"</td><td>"+list[i].money+"</td><td>"+state+"</td><td>"+btnStr+"</td></tr>";
 					$("#orderList").append(htmlStr);
 					l++;
 				}

@@ -46,7 +46,7 @@ function getroomList(){
 			"pageSize":pageSize		
 		},
 		success:function(data){
-			if(isEmptyObject(data.List)){
+			if(isEmptyObject(data.List)||pageNum>0){
 				pageNum=pageNum-1;
 				getroomList();
 			}
@@ -113,10 +113,10 @@ function btnOn(){
 		setPage( );
 	})
 	$("input").filter("#setStop").on('click',function(event){
-		setState(event,"1");
+		setState(event,"0");
 	});
 	$("input").filter("#setStart").on('click',function(event){
-		setState(event,"0");
+		setState(event,"1");
 	});
 	$("input").filter("#addRoomBtn").on('click',function( ){
 		addRoom( );
@@ -167,17 +167,17 @@ function setRoomajax( ){
 		success:function(data){
 			if(data.code==0){
 				alert("修改成功");
-
-				
 				$("#reinputLocal").val("");
 				$("#reinputPrice").val("");
 				$("#reinputType").val("");
 				$("#reinputid").val("");
 				$('#alterRoom').modal('toggle');
-				getRoomList();
+				getroomList();
 			}
-			else
-				alert("修改失败")
+			else{
+				alert("修改失败");
+				getroomList();
+			}
 		},
 		error:function(){
 			alert("修改信息出现错误");

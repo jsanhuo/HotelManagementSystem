@@ -36,7 +36,7 @@ var list;
 function getStaffList(){
 	$.ajax({
 		type:"post",
-		url:"../user/getUserByPower",
+		url:"../user/getUserByPower.do",
 		dataType:"JSON",
 		data:{
 			"pageNum":pageNum,

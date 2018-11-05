@@ -34,12 +34,12 @@ function getConfig(){
 				"<tr><td>经理</td><td>"+config.staffsalary+"</td><td>"+config.staff+"</td></tr>"+
 				"<tr><td>经理</td><td>"+config.cleanersalary+"</td><td>"+config.cleaner+"</td></tr>";
 				$("#configList").append(htmlStr);
-				$("#inputMS").val(config.managesalary);
-				$("#inputSS").val(config.staffsalary);
-				$("#inputCS").val(config.cleanersalary);
-				$("#inputM").val(config.manage);
-				$("#inputS").val(config.staff);
-				$("#inputC").val(config.cleaner);
+				$("#inputMS").val(config.manage);
+				$("#inputSS").val(config.staff);
+				$("#inputCS").val(config.cleaner);
+				$("#inputM").val(config.managesalary);
+				$("#inputS").val(config.staffsalary);
+				$("#inputC").val(config.cleanersalary);
 			}
 			else{
 				alert("获取配置错误");
@@ -75,12 +75,12 @@ function alterConfig(){
 			url:"../config/updateConfig.do",
 			dataType:"JSON",
 			data:{
-				"managesalary":$("#inputMS").val(),
-				"staffsalary":$("#inputSS").val(),
-				"cleanersalary":$("#inputCS").val(),
-				"manage":$("#inputM").val(),
-				"staff":$("#inputS").val(),
-				"cleaner":$("#inputC").val()
+				"managesalary":$("#inputM").val(),
+				"staffsalary":$("#inputS").val(),
+				"cleanersalary":$("#inputC").val(),
+				"manage":$("#inputMS").val(),
+				"staff":$("#inputSS").val(),
+				"cleaner":$("#inputCS").val()
 			},
 			success:function(data){
 				if(code=="0"){

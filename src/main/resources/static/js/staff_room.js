@@ -149,7 +149,7 @@ function setPage(){
 	
 }
 
-function chooseRoom(event){
+function chooseRoomBtn(event){
 	var roomid=$(event.target).data("roomid");
 	choose=roomid;
 	for(i in list){

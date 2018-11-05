@@ -181,16 +181,16 @@ function getSalary(){
 				if(data.code=="0"){
 					var config=data.config;
 					if(power=="1"){
-						$("#salary").text(config.managesalary);
-						$("#commission").text(config.manage);
+						$("#salary").text(config.manage);
+						$("#commission").text(config.managesalary);
 					}
 					else if(power=="2"){
-						$("#salary").text(config.staffsalary);
-						$("#commission").text(config.staff);
+						$("#salary").text(config.staff);
+						$("#commission").text(config.staffsalary);
 					}
 					else{
-						$("#salary").text(config.cleanersalary);
-						$("#commission").text(config.cleaner);
+						$("#salary").text(config.cleaner);
+						$("#commission").text(config.cleanersalary);
 					}
 					
 				}

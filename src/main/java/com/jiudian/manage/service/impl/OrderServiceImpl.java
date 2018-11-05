@@ -76,14 +76,16 @@ public class OrderServiceImpl implements OrderService {
         Integer roomid = order.getRoomid();
         Room room = new Room();
         room.setRoomid(roomid);
+        int i = 1;
         if(state==2){
             room.setState(3);
+            i = roomMapper.updateByPrimaryKeySelective(room);
         }
         if(state==3){
             room.setState(1);
+            i = roomMapper.updateByPrimaryKeySelective(room);
         }
         order.setState(state);
-        int i = roomMapper.updateByPrimaryKeySelective(room);
         if(i>0){
             int i1 = orderMapper.updateByPrimaryKeySelective(order);
             if(i1>0){

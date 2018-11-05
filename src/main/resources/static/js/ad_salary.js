@@ -83,13 +83,14 @@ function alterConfig(){
 				"cleaner":$("#inputCS").val()
 			},
 			success:function(data){
-				if(code=="0"){
+				if(data.code=="0"){
 					alert("修改成功");
-					window.location.reload();
+					
 				}
 				else{
 					alert("修改配置错误");
 				}
+				window.location.reload();
 
 			},
 			error:function(){

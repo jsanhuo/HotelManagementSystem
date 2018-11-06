@@ -118,9 +118,6 @@ function btnOn(){
 	$("input").filter("#setStart").on('click',function(event){
 		setState(event,"1");
 	});
-	$("input").filter("#addRoomBtn").on('click',function( ){
-		addRoom( );
-	});
 	$("input").filter("#setRoomBtn").on('click',function( ){
 		setRoomajax( );
 	});
@@ -268,10 +265,12 @@ function addRoom(){
 					$("#inputLocal").val();
 					$("#inputPrice").val();
 					$("#inputType").val();
-					getroomList();
+					window.location.reload();
 				}
-				else
-					alert("添加失败")
+				else{
+					alert("添加失败");
+					window.location.reload();
+				}
 			},
 			error:function(){
 				alert("添加出现错误");

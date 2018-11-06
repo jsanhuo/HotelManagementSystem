@@ -10,9 +10,14 @@ $(document).ready(function(){
 	$("#next").on('click',function(){
 		getNext();
 	});
-	$("#addRoomBtn").on('click',function(){
+	$("input").filter("#setRoomBtn").on('click',function( ){
+		setRoomajax( );
+	});
+
+	$("input").filter("#addRoomBtn").on('click',function(){
 		addRoom();
-	})
+	});
+
 
 })
 
@@ -118,12 +123,10 @@ function btnOn(){
 	$("input").filter("#setStart").on('click',function(event){
 		setState(event,"1");
 	});
-	$("input").filter("#setRoomBtn").on('click',function( ){
-		setRoomajax( );
-	});
 	$("input").filter("#setRoom").on('click',function(event){
 		setRoom(event);
 	});
+
 }
 
 function getPre(){
@@ -262,10 +265,10 @@ function addRoom(){
 				if(data.code==0){
 					alert("添加成功");
 					$('#addRoom').modal('toggle');
-					$("#inputLocal").val();
-					$("#inputPrice").val();
-					$("#inputType").val();
-					window.location.reload();
+					$("#inputLocal").val(" ");
+					$("#inputPrice").val(" ");
+					$("#inputType").val(" ");
+					getroomList();
 				}
 				else{
 					alert("添加失败");

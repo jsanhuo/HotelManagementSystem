@@ -17,8 +17,8 @@ $(document).ready(function(){
 function isEmptyObject(e) {
 	var t;
 	for (t in e)
-		return 1;
-	return 0;
+		return 0;
+	return 1;
 }
 
 

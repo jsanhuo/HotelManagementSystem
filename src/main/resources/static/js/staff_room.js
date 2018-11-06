@@ -52,8 +52,8 @@ $(document).ready(function(){
 function isEmptyObject(e) {
 	var t;
 	for (t in e)
-		return 0;
-	return 1;
+		return 1;
+	return 0;
 }
 
 //判断字符串是否为空 空返回1 非空返回0

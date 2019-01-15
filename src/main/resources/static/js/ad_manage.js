@@ -93,13 +93,13 @@ function getStaffList(){
 
 function btnOn(){
 	$("input").filter("#setStaff").on('click',function(event){
-		setStaff(event);
+        setPosition(event,"2");
 	});
 	$("input").filter("#setManage").on('click',function(event){
 		setPosition(event,"1");
 	});
 	$("input").filter("#setPwd").on('click',function(event){
-		setPosition(event,"2");
+        setPwd(event);
 	});
 	$("input").filter("#delUser").on('click',function(event){
 		delUser(event);

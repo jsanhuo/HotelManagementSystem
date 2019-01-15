@@ -26,6 +26,7 @@ public class FileController {
     @RequestMapping("/upFilePhoto.do")
     public Map upFilePhoto(@RequestParam MultipartFile file,@RequestParam int userid){
         String fileName = UUID.randomUUID().toString()+file.getOriginalFilename();
+
         String filePath = ".\\src\\main\\resources\\static\\File\\";
         String RealfilePath = "File\\"+fileName;
         boolean photo = userService.photo(userid, RealfilePath);

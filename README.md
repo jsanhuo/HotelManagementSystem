@@ -52,6 +52,10 @@
 管理员(人员管理（权限修改，密码重置），工资管理（修改），业绩（查看汇总，所有订单列表）)
 
 
+SQL找不到了。。可以通过数据库配置里面自己复原数据库：MyBatisMapper
+https://github.com/jsanhuo/HotelManagementSystem/tree/master/src/main/resources/mappers
+
+
 
 
 
